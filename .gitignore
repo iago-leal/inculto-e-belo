@@ -10,3 +10,4 @@
 # Artefatos de sistema / editor
 .DS_Store
 *.swp
+.harness/sync-cache.json

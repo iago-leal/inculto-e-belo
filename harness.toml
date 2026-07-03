@@ -1,0 +1,15 @@
+[harness]
+active_harness = "claude"
+upstream_path = "/Users/iagoleal/dev/harness"
+
+[session]
+state_file = ".harness/estado-da-sessao.md"
+
+[decisions]
+dir = ".harness/decisoes"
+index_file = ".harness/microdecisoes.md"
+header_file = ".harness/decisoes/_cabecalho.md"
+
+# [regen]
+# Comando que regenera os artefatos derivados do projeto antes de encerrar a sessão.
+# command = "python gerar_site.py && python empacotar.py"

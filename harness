@@ -1,0 +1,12 @@
+#!/bin/bash
+# Shim do Harness — executa o core do upstream (fonte única, feature 020)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1
+UPSTREAM=$(sed -n 's/^upstream_path = "\(.*\)"/\1/p' harness.toml | head -1)
+PY="$UPSTREAM/.harness/harness-core/.venv/bin/python3"
+MAIN="$UPSTREAM/.harness/harness-core/src/main.py"
+if [ -z "$UPSTREAM" ] || [ ! -f "$MAIN" ] || [ ! -f "$PY" ]; then
+    echo "Erro: core do Harness não encontrado no upstream (confira upstream_path em harness.toml)." >&2
+    exit 1
+fi
+exec "$PY" "$MAIN" "$@"
