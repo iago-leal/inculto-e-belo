@@ -1,34 +1,32 @@
 ---
-commit: 7703eb768367ca08e0e78d481f8a0a11245f0501
+commit: 969fc82da9fea4aad94e513d36ef58451b2c9798
 feature: default_feature
-start_time: '2026-07-03T20:54:38.048137+00:00'
+start_time: '2026-07-03T21:52:16.436985+00:00'
 status: inactive
 ---
 
 ## O que foi feito
-- **Feature `001-spike-de-flexoes` concluída de ponta a ponta (13/13 ações), veredito GO presumido.** Pipeline completo numa sessão: `/reversa-plan` (roadmap com 10 decisões, investigation, data-delta, onboarding, interface do artefato) → `/reversa-to-do` (13 ações) → `/reversa-coding`.
-- **Extração reversa completa via `/reversa-autonomous`** — o gate do coding exigia `architecture.md`+`domain.md` inexistentes (projeto nasceu greenfield). Artefatos em `_reversa_sdd/`: inventário, dicionário de dados das **14 tabelas** (o README listava 8), domain com 14 regras, C4 níveis 1–3, ERD, 5 ADRs retroativos, units `banco-lexical/` e `governanca-operacional/`, confiança ~92%. O Revisor resolveu por amostragem as 4 lacunas do banco: `flexions.type` (1=plural, 2=fem., 3=fem. pl., 4=dim., 5=aum.), `entries.head_type` (palavra/símbolo/afixo/locução), mapa completo dos 13 `conjugations.tense`.
-- **Achado RB-14:** `flexions.flexion` traz múltiplas formas por linha (1.349 com `,`, 15 com `" ou "`) — o gerador divide; sem isso ~1.400 entradas do `.syn` nasceriam corrompidas.
-- **Spike implementado e gerado** (`spike/001-flexoes/`, uv + PyGlossary 5.4.1 + python-idzip 0.3.9 pinados): 137.784 headwords, `.syn` com **774.003 formas = 100% dos pares válidos** (o limiar de 900 mil de RF-01 era estimativa que ignorava ~220 mil repetições legítimas entre pessoas verbais — desvio documentado), 4,9 s de geração, 462 MB de pico, órfãs = 22 lemas exatos, invariante fechada.
-- **Validação no KOReader do macOS** (sdcv embutido do app): 20/20 formas do roteiro resolvem ao(s) lema(s) esperado(s), ambíguas listam múltiplos destinos, mediana 16 ms (informativa). OQ-02 respondida: o lookup exato **não normaliza** caixa/diacríticos; o fallback fuzzy resgata ("Árvores"→árvore).
-- **Decisão do usuário:** medição no Boox dispensada ("vou pressupor que funcione") — T009/T010 fechadas como skipped, veredito **GO presumido** com condição de monitoramento nas primeiras leituras reais e escada de fallbacks de RN-05 preservada. `spike-report.md` redigido com as 4 OQs respondidas.
-- Pendências de governança executadas: README atualizado para as 14 tabelas; `.gitignore` cobre `spike/*/dist|.venv|medições`. Commit `7703eb7` (56 arquivos) pushed para `origin/main`.
+- **Feature `002-build-completo-de-producao` concluída de ponta a ponta (19/19 ações), artefato aprovado pela paridade.** Ciclo forward completo numa sessão: `/reversa-requirements` (herdando os achados do spike; a T007 da 001 foi reconciliada — estava `done` no progress.jsonl, faltava a checkbox) → `/reversa-clarify` (4 dúvidas resolvidas: pipeline nasce em `pipeline/` com spike congelado como registro; paridade normaliza whitespace; manifesto só com contagens; substituição sem retenção) → `/reversa-plan` (14 decisões, todas 🟢) → `/reversa-to-do` (19 ações) → `/reversa-coding`.
+- **Pipeline de produção em camadas** (`pipeline/`, uv, PyGlossary 5.4.1 + python-idzip 0.3.9 + pytest 8.4.1 + coverage 7.9.1 pinados): `infra/repositorio.py` (único dono do SQL, `mode=ro`, smoke tests contra `manifesto-integridade.json` versionado), `dominio/indice_flexoes.py` e `dominio/renderizacao.py` (puros), `infra/escrita_stardict.py` (adaptador PyGlossary, escrita atômica, verificação do `.dict.dz`), `validacao/` (parser StarDict próprio em stdlib + checks de tolerância zero) e `cli.py` (`uv run aurelio-pipeline`, exit 0/2/3).
+- **Build aprovado em escala real:** `wordcount=137784`, `synwordcount=774003`, órfãs 22 lemas/748 formas, invariante 1.045.742 fechada — idênticos ao baseline do spike. 12,2 s, 608 MB de pico, artefato 28,5 MB (limites: 10 min / 2 GB / 250 MB). Verbetes agora **integrais** (definições+rubricas, exemplos editor/citation, locuções, notas, regência Luft), homônimos fundidos.
+- **O gate pegou um defeito real na 1ª rodada:** paridade reprovou com 166 divergências porque `texto_de_html` trocava tags por espaço (`"V. <u>sucuri</u>."` → `"sucuri ."`); corrigido para remoção por string vazia (mesma derivação do `content_text`), 2ª rodada aprovada 500/500 + 500/500.
+- **Qualidade:** 50 testes, cobertura 96% em domínio+validação+repositório (exigência ≥ 60%); cada erro nomeado da ingestão coberto (aceite de RF-01). Instalado no KOReader do macOS com `aurelio-spike` removido; smoke sdcv 3/3 (`cantávamos`→cantar integral, `belas`→bela+belo+belas, `coração`→3 homônimos numerados).
+- **Governança:** `pipeline/README.md` (runbook do zero + fluxo de atualização do manifesto + fallback `--cobertura flexions-somente`), README raiz com seção do pipeline, `.gitignore` cobre `dist/` e `pipeline/.venv/`, e `[regen]` do `harness.toml` **habilitado** com o build (determinístico, ~12 s, paridade embutida).
 
 ## Próximos passos
-- **Abrir a feature do build completo** com `/reversa-requirements`: pipeline de produção (`ingestao-aurelio` → `indice-de-flexoes` → `conversao-formato` → `validacao-paridade`), herdando os achados do spike (baseline 774.003, RB-14, python-idzip pinado, homonym-merge validado).
-- Quando for ler no Boox: copiar `spike/001-flexoes/dist/aurelio-spike/` por USB para `koreader/data/dict/` — cumpre a condição de monitoramento do veredito. Se latência decepcionar, 1º fallback pronto: `uv run python gerar_spike.py --cobertura flexions-somente`.
-- Verificar caminho/autenticação do WebDAV no `koreader-notas` (OQ-01 da spec `distribuicao-webdav`) — só quando o build chegar à distribuição.
-- Pergunta opcional em `_reversa_sdd/questions.md` (critério de `entries.most_used`) — responder só se houver interesse gramatical.
+- **Re-extração `/reversa`** para fechar o ciclo: reclassificar P-01..P-04 de 🟡 PLANEJADO para 🟢 CONFIRMADO (agora existem em `pipeline/`) e rodar o step-04 contra os watch items da 001 **e** da 002 (12 no total). Decisão do usuário; não disparar sozinho.
+- **Feature de distribuição** (`distribuicao-webdav`, única spec ainda sem código) quando houver interesse: antes, verificar caminho/autenticação do WebDAV no `koreader-notas` (OQ-01 da spec).
+- Quando for ler no Boox: copiar `dist/aurelio-stardict/` por USB para `koreader/data/dict/` (removendo `aurelio-spike/` se estiver lá) — cumpre a condição de monitoramento do GO presumido; fallback pronto na CLI.
+- Pergunta opcional em `_reversa_sdd/questions.md` (critério de `entries.most_used`) segue aberta, sem urgência.
 
 ## Pendências / bloqueios
-- Nenhum bloqueio. **Risco residual assumido:** latência no e-ink não foi medida (decisão do usuário, registrada no decision log do `spike-report.md`); mitigação = monitoramento nas primeiras leituras + fallbacks de RN-05 na ordem fixa.
-- Artefato do spike instalado também no KOReader do macOS (`~/Library/Application Support/koreader/data/dict/aurelio-spike/`) — lembrar de remover se um dia incomodar.
-- Na próxima re-extração `/reversa`, o step-04 verificará os 6 watch items de `regression-watch.md` (baseline do banco, RB-14, órfãs=22, mode=ro, uso pessoal, mapa dos tempos).
+- Nenhum bloqueio. **Risco residual (herdado do spike):** latência no e-ink segue presumida; a condição de monitoramento transferiu-se ao artefato de produção (O-04 do `regression-watch.md` da 002).
+- `[regen]` roda o build a cada encerramento de sessão e pressupõe o `.db` presente — se incomodar, reverter é uma linha no `harness.toml` (O-03).
+- O dicionário instalado no KOReader do macOS agora é `aurelio-stardict/` (o do spike foi removido).
 
 ## Ponteiros
-- Veredito e OQs: `_reversa_forward/001-spike-de-flexoes/spike-report.md` (GO presumido; decision log na §6).
-- Trilha da execução: `actions.md` (§Notas de execução tem os 3 desvios documentados) e `progress.jsonl` da feature.
-- Auditoria: `legacy-impact.md` e `regression-watch.md` (6 watch items + observações O-01..O-03).
-- Código do spike: `spike/001-flexoes/` (README com reprodução e fallback; `dist/` fora do git).
-- Extração: `_reversa_sdd/` (confidence-report ~92%; `data-dictionary.md` com os enums resolvidos; `domain.md` §6 com RB-14).
-- Estado Reversa: `.reversa/state.json` (5 fases concluídas), `.reversa/active-requirements.json` (feature `done`).
+- Código de produção: `pipeline/` (README com reprodução do zero; arquitetura em camadas mapeada às specs).
+- Trilha da execução: `_reversa_forward/002-build-completo-de-producao/` — `actions.md` (19/19, §Notas de execução com os desvios), `progress.jsonl`, `roadmap.md` (14 decisões), `requirements.md` (§9 com as 4 decisões da clarificação).
+- Auditoria: `legacy-impact.md` (banco e spike intocados; nenhuma regra 🟢 modificada) e `regression-watch.md` (6 watch items W001–W006 + observações O-01..O-04).
+- Artefato: `dist/aurelio-stardict/` (fora do git) com `relatorio-cobertura.json` e `parity-report.json` aprovado.
+- Estado Reversa: `.reversa/active-requirements.json` (feature 002 `done`, sem pausadas); extração em `_reversa_sdd/` ainda anterior ao pipeline (motivo da re-extração sugerida).
