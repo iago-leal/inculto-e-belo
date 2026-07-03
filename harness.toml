@@ -10,6 +10,8 @@ dir = ".harness/decisoes"
 index_file = ".harness/microdecisoes.md"
 header_file = ".harness/decisoes/_cabecalho.md"
 
-# [regen]
-# Comando que regenera os artefatos derivados do projeto antes de encerrar a sessão.
-# command = "python gerar_site.py && python empacotar.py"
+# Regenera o dicionário StarDict (dist/aurelio-stardict/) a partir do banco.
+# Build determinístico e barato (~12 s) com validação de paridade embutida;
+# falha barulhenta se o .db estiver ausente (restaurar via rclone, ver README).
+[regen]
+command = "cd pipeline && uv run aurelio-pipeline"

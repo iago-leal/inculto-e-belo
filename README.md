@@ -51,6 +51,18 @@ A fonte de verdade é a cópia local; o backup fica no Google Drive via rclone:
     sqlite3 aurelio_normalized.db
     sqlite> SELECT lemma, word_class_summary FROM entries WHERE lemma = 'belo';
 
+## Dicionário para o KOReader (pipeline de build)
+
+O diretório `pipeline/` contém o build de produção que converte o banco num
+dicionário StarDict completo para o KOReader (verbetes integrais + índice de
+flexões), com validação de paridade automática. Runbook completo — reprodução
+do zero, instalação nos dispositivos e troubleshooting — em `pipeline/README.md`.
+
+    cd pipeline && uv sync && uv run aurelio-pipeline
+
+A saída vai para `dist/aurelio-stardict/` (fora do git; conteúdo sob direitos
+autorais do Aurélio, uso estritamente pessoal).
+
 ## Proveniência
 
 Importado em 2026-07-03 de

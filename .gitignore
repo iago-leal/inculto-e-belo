@@ -22,3 +22,9 @@ spike/*/dist/
 spike/*/.venv/
 spike/*/medicao-geracao.txt
 spike/*/geracao-stdout.txt
+
+# Build de produção (feature 002) — artefato derivado com conteúdo do Aurélio
+# (uso estritamente pessoal: jamais versionar) e ambiente local do pipeline
+dist/
+pipeline/.venv/
+pipeline/.coverage

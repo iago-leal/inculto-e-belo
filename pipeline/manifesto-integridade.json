@@ -1,0 +1,19 @@
+{
+  "gerado_em": "2026-07-03",
+  "banco_referencia": "aurelio_normalized.db",
+  "observacao": "Contagens por tabela (sem hash — decisão em requirements §9). Atualização deste arquivo é sempre commit deliberado (fluxo em pipeline/README.md).",
+  "contagens": {
+    "entries": 143376,
+    "word_class_blocks": 168361,
+    "word_classes": 302,
+    "definitions": 259337,
+    "rubrics": 2655,
+    "examples": 54726,
+    "notes": 28903,
+    "locutions": 22168,
+    "locution_definitions": 24034,
+    "verb_rection": 6170,
+    "flexions": 175259,
+    "conjugations": 869119
+  }
+}
