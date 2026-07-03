@@ -1,0 +1,12 @@
+# Bancos de dados — NÃO versionar no git (grandes demais para o GitHub).
+# Backup fica no Google Drive via rclone (ver README).
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Artefatos de sistema / editor
+.DS_Store
+*.swp
