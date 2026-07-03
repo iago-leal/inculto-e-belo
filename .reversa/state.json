@@ -18,10 +18,7 @@
     "revisao"
   ],
   "checkpoints": {},
-  "engines": [
-    "claude-code",
-    "antigravity"
-  ],
+  "engines": ["claude-code", "antigravity"],
   "agents": [
     "reversa",
     "reversa-autonomous",
@@ -192,14 +189,10 @@
     ".reversa/_config/manifest.yaml"
   ],
   "newproject_progress": {
-    "stage": "spec-sdd",
+    "stage": "done",
     "started_at": "2026-07-03T19:30:34Z",
-    "last_checkpoint_at": "2026-07-03T20:05:37Z",
-    "completed_stages": [
-      "ideator",
-      "researcher",
-      "drafter"
-    ],
+    "last_checkpoint_at": "2026-07-03T21:10:00Z",
+    "completed_stages": ["ideator", "researcher", "drafter", "spec-sdd"],
     "brief": "Utilizaremos esse banco de dados de dicionário para desenvolver algumas aplicações. A primeira será fazer com que ele seja acessível ao KOReader. Prioridades: longevidade, saúde, manutenibilidade"
   }
 }
