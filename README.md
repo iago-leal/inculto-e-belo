@@ -3,7 +3,7 @@
 Dicionário da língua portuguesa em SQLite, base para trabalho de gramática
 normativa. O nome vem do verso de Bilac (*"Última flor do Lácio, inculta e bela"*).
 
-Repositório: <https://github.com/iago-leal/incultoebelo>
+Repositório: <https://github.com/iago-leal/inculto-e-belo>
 
 ## O que é
 
