@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-07-03T21:45:00Z",
+  "project_root": "/Users/iagoleal/dev/inculto-e-belo",
+  "languages": [
+    { "name": "SQL/SQLite", "extensions": [".db"], "file_count": 1 },
+    { "name": "Markdown", "extensions": [".md"], "file_count": 15 },
+    { "name": "Bash", "extensions": [""], "file_count": 1 }
+  ],
+  "primary_language": "SQL/SQLite",
+  "frameworks": [
+    {
+      "name": "SQLite FTS5",
+      "version": "embutida no arquivo .db",
+      "source": "tabelas fts_entries/fts_definitions"
+    }
+  ],
+  "package_manager": "nenhum",
+  "entry_points": [
+    { "path": "aurelio_normalized.db", "type": "data_asset" },
+    { "path": "harness", "type": "cli_shim_governanca" }
+  ],
+  "config_files": ["harness.toml", ".gitignore"],
+  "ci_cd": [],
+  "database_hints": [
+    { "path": "aurelio_normalized.db", "type": "sqlite_database" }
+  ],
+  "test_framework": null,
+  "test_file_count": 0,
+  "modules": ["banco-lexical", "governanca-operacional"],
+  "total_files": 19,
+  "organization_suggestion": {
+    "granularity": "module",
+    "rationale": "Sem pastas de código nem rotas; o sistema é um banco SQLite cujos domínios de dados (verbetes, flexões, conjugações, busca) formam um módulo coeso, mais a camada operacional.",
+    "signals": [
+      { "type": "single_data_asset", "evidence": ["aurelio_normalized.db"] }
+    ],
+    "features": []
+  },
+  "notes": [
+    "Projeto é ativo de dados, não aplicação: 24 tabelas (14 de domínio), 18 índices, 0 views, 0 triggers.",
+    "README lista 8 tabelas de domínio, banco tem 14 — divergência a documentar pelo Data Master.",
+    "Ciclo forward já aberto: _reversa_forward/001-spike-de-flexoes (spike StarDict/KOReader)."
+  ]
+}

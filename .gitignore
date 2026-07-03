@@ -15,3 +15,10 @@
 # Bytecode Python (regenerável)
 __pycache__/
 *.pyc
+
+# Spike de flexões — artefatos gerados e ambiente local (o artefato StarDict
+# contém conteúdo do Aurélio, uso estritamente pessoal: jamais versionar)
+spike/*/dist/
+spike/*/.venv/
+spike/*/medicao-geracao.txt
+spike/*/geracao-stdout.txt

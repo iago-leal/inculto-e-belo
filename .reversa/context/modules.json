@@ -1,0 +1,276 @@
+{
+  "generated_at": "2026-07-03T22:05:00Z",
+  "modules": [
+    {
+      "name": "banco-lexical",
+      "path": "aurelio_normalized.db",
+      "purpose": "Léxico do Aurélio normalizado: 14 tabelas de domínio + FTS5, hierarquia verbete → blocos de classe → acepções, com flexões e conjugações ligadas por texto ao lema",
+      "primary_files": ["aurelio_normalized.db"],
+      "functions": [],
+      "entities": [
+        {
+          "name": "entries",
+          "fields": [
+            { "name": "lemma", "type": "TEXT", "required": true },
+            { "name": "slug", "type": "TEXT", "required": true },
+            { "name": "homonym", "type": "INTEGER", "required": false },
+            { "name": "word_class_summary", "type": "TEXT", "required": false },
+            { "name": "ipa", "type": "TEXT", "required": false },
+            { "name": "etymology_html", "type": "TEXT", "required": false },
+            { "name": "head_type", "type": "INTEGER", "required": false },
+            { "name": "most_used", "type": "INTEGER", "required": false },
+            { "name": "sort_key", "type": "TEXT", "required": false }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "word_class_blocks",
+          "fields": [
+            { "name": "entry_id", "type": "FK entries", "required": true },
+            {
+              "name": "word_class_id",
+              "type": "FK word_classes",
+              "required": false
+            },
+            { "name": "position", "type": "INTEGER", "required": true },
+            { "name": "intro_text", "type": "TEXT", "required": false }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "definitions",
+          "fields": [
+            {
+              "name": "word_class_block_id",
+              "type": "FK word_class_blocks",
+              "required": true
+            },
+            { "name": "position", "type": "INTEGER", "required": true },
+            { "name": "number", "type": "TEXT", "required": false },
+            { "name": "content_html", "type": "TEXT", "required": true },
+            { "name": "content_text", "type": "TEXT", "required": true },
+            { "name": "rubric_id", "type": "FK rubrics", "required": false }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "examples",
+          "fields": [
+            {
+              "name": "definition_id",
+              "type": "FK definitions",
+              "required": false
+            },
+            {
+              "name": "locution_definition_id",
+              "type": "FK locution_definitions",
+              "required": false
+            },
+            {
+              "name": "kind",
+              "type": "TEXT CHECK editor|citation",
+              "required": true
+            },
+            { "name": "content_html", "type": "TEXT", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "notes",
+          "fields": [
+            {
+              "name": "parent_type",
+              "type": "TEXT CHECK entry|definition|locution|locution_definition",
+              "required": true
+            },
+            {
+              "name": "parent_id",
+              "type": "INTEGER (polimórfica)",
+              "required": true
+            },
+            { "name": "content_html", "type": "TEXT", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "locutions",
+          "fields": [
+            { "name": "entry_id", "type": "FK entries", "required": true },
+            { "name": "expression", "type": "TEXT", "required": true },
+            { "name": "rubric_id", "type": "FK rubrics", "required": false }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "locution_definitions",
+          "fields": [
+            { "name": "locution_id", "type": "FK locutions", "required": true },
+            { "name": "content_html", "type": "TEXT", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "verb_rection",
+          "fields": [
+            { "name": "entry_id", "type": "FK entries", "required": true },
+            { "name": "sense", "type": "INTEGER", "required": false },
+            { "name": "transitivity", "type": "TEXT", "required": false },
+            { "name": "prepositions", "type": "TEXT CSV", "required": false },
+            { "name": "observation", "type": "TEXT", "required": false },
+            { "name": "source", "type": "TEXT DEFAULT luft", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "flexions",
+          "fields": [
+            {
+              "name": "entry_head",
+              "type": "TEXT (ligação textual com entries.lemma)",
+              "required": true
+            },
+            { "name": "flexion", "type": "TEXT", "required": true },
+            {
+              "name": "type",
+              "type": "INTEGER (semântica não documentada)",
+              "required": false
+            },
+            { "name": "homonym", "type": "INTEGER", "required": false }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "conjugations",
+          "fields": [
+            {
+              "name": "infinitive",
+              "type": "TEXT (ligação textual com entries.lemma)",
+              "required": true
+            },
+            { "name": "tense", "type": "INTEGER 1-13", "required": true },
+            {
+              "name": "person",
+              "type": "TEXT eu|tu|ele|nós|vós|eles|vazio",
+              "required": false
+            },
+            { "name": "conjugation", "type": "TEXT", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "rubrics",
+          "fields": [
+            { "name": "abbreviation/whole", "type": "TEXT", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "word_classes",
+          "fields": [
+            { "name": "abbreviation/whole", "type": "TEXT", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "orthographic_marks",
+          "fields": [
+            {
+              "name": "entry_id + previous_spelling",
+              "type": "PK composta",
+              "required": true
+            },
+            {
+              "name": "rule_code",
+              "type": "TEXT → orthographic_rules",
+              "required": false
+            }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "orthographic_rules",
+          "fields": [
+            {
+              "name": "rule/explanation/examples",
+              "type": "TEXT",
+              "required": true
+            }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Acepção pertence a bloco de classe gramatical, nunca diretamente ao verbete",
+          "location": "DDL definitions.word_class_block_id NOT NULL",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Homonímia por linhas repetidas de lemma com discriminador homonym (4.585 lemas, 143.376 entries, 137.784 lemas únicos)",
+          "location": "entries",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Todo conteúdo textual em par content_html/content_text",
+          "location": "DDL de definitions/examples/notes/locution_definitions",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Ordenação editorial sempre por position explícito",
+          "location": "DDL (todas as tabelas ordenadas)",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "flexions/conjugations ligam por texto ao lemma, sem FK — 22 formas órfãs conhecidas",
+          "location": "DDL flexions/conjugations",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "FTS5 external content com remoção de diacríticos (unicode61 remove_diacritics 2; porter em definições)",
+          "location": "DDL fts_entries/fts_definitions",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [],
+      "complexity": "medium",
+      "gaps": [
+        "Semântica de flexions.type (valores 1-5) não documentada",
+        "Semântica de entries.head_type (valores 1-4) não documentada",
+        "Mapa numérico tense 1-13 → nome do tempo verbal não documentado"
+      ]
+    },
+    {
+      "name": "governanca-operacional",
+      "path": ".",
+      "purpose": "Operação do ativo: shim do Harness, backup/restauração via rclone, exclusão do .db no git",
+      "primary_files": ["harness", "harness.toml", ".gitignore", "README.md"],
+      "functions": [
+        {
+          "name": "harness (shim)",
+          "file": "harness",
+          "params": ["$@ repassados ao core"],
+          "returns": "exec do core Python no upstream ou exit 1",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "O .db nunca entra no git; backup único em gdrive:inculto-e-belo/ via rclone",
+          "location": ".gitignore + README.md",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Fonte de verdade é a cópia local; proveniência via sqlite3 .backup com integrity_check ok",
+          "location": "README.md §Proveniência",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": ["~/dev/harness (upstream do core)"],
+      "algorithms": [],
+      "complexity": "low",
+      "gaps": ["README lista 8 das 14 tabelas de domínio (desatualizado)"]
+    }
+  ]
+}

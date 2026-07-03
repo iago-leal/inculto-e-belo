@@ -4,7 +4,7 @@
   "feature-id": "001",
   "short-name": "spike-de-flexoes",
   "started-at": "2026-07-03T20:39:12Z",
-  "current-stage": "requirements",
-  "stages-completed": [],
+  "current-stage": "done",
+  "stages-completed": ["requirements", "clarify", "plan", "to-do", "coding"],
   "paused-features": []
 }

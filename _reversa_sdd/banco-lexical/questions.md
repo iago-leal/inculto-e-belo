@@ -1,0 +1,14 @@
+# banco-lexical, Perguntas em aberto
+
+> Gerado pelo reversa-writer em 2026-07-03; **atualizado pelo reversa-reviewer na mesma data**: as quatro perguntas foram resolvidas por amostragem direta no banco, sem necessidade de validação humana. Evidências promovidas a `data-dictionary.md`, `code-analysis.md` §4 e `domain.md` §6.
+
+| #    | Pergunta                                   | Status                                  | Resposta                                                                                                                                                                                                                                                       |
+| ---- | ------------------------------------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Q-01 | Semântica de `flexions.type` (1–5)?        | ✅ Respondida (amostragem)              | 🟢 1=plural, 2=feminino, 3=feminino plural, 4=diminutivo (ex.: aba→abeta), 5=aumentativo (ex.: bala→balaço)                                                                                                                                                    |
+| Q-02 | Semântica de `entries.head_type` (1–4)?    | ✅ Respondida (amostragem)              | 🟢 1=palavra comum; 2=letra/sigla/símbolo ("A", "Å", "A4"); 3=afixo/elemento de composição ("a-", "-a-"); 4=locução/expressão latina-estrangeira ("ab absurdo")                                                                                                |
+| Q-03 | Mapa de `conjugations.tense` (1–13)?       | ✅ Respondida (amostragem com "cantar") | 🟢 1=presente ind., 2=pret. imperfeito, 3=pret. perfeito, 4=mais-que-perfeito, 5=futuro do presente, 6=futuro do pretérito, 7=presente subj., 8=imperfeito subj., 9=futuro subj., 10=imperativo (5 pessoas), 11=infinitivo pessoal, 12=gerúndio, 13=particípio |
+| Q-04 | Critério editorial de `entries.most_used`? | ⚠️ Parcial                              | 🟡 Amostra confirma vocabulário básico/frequente (abrir, abraço, absoluto…); o critério exato do app original permanece inferido. Não bloqueia nada; responder só se houver interesse gramatical futuro                                                        |
+
+## Achado adicional da revisão
+
+**RB-14 (novo, 🟢):** `flexions.flexion` contém múltiplas formas numa linha em 1.364 casos — separadores `,` (1.349) e `" ou "` (15). `conjugations` está limpa; não há formas vazias. **Impacto direto na feature `001-spike-de-flexoes`:** a ação T004 (mapeamento do `.syn`) deve dividir esses separadores antes de indexar, senão ~1.400 formas viram entradas inválidas no índice.

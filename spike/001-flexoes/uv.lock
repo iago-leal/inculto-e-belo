@@ -1,0 +1,35 @@
+version = 1
+revision = 3
+requires-python = ">=3.12"
+
+[[package]]
+name = "pyglossary"
+version = "5.4.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/2c/b2/a9c2db7100be61130804650372fa928663fc9f5d64a5767563d44595fab2/pyglossary-5.4.1.tar.gz", hash = "sha256:5c5734c2ee399d40faf908a4edbc6b87d594d6560d169799489eabbb191d297e", size = 636630, upload-time = "2026-06-04T13:49:07.08Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/83/3c/71eff3f68a4492162278c65561cc511a3ca99b46af46d88ade975b311b88/pyglossary-5.4.1-py3-none-any.whl", hash = "sha256:860dd345c510e6912fa680f88a0313a3c0b7f0cd5f2a362da5955b22ccf8727d", size = 874902, upload-time = "2026-06-04T13:49:05.602Z" },
+]
+
+[[package]]
+name = "python-idzip"
+version = "0.3.9"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e9/09/87a567b71ec3038947abed2bb679cc6a9194a17609fea3b572935b55e12e/python_idzip-0.3.9-py3-none-any.whl", hash = "sha256:38dd2690ddc60d40b4bdb3867ae495b3ba27566f93c14b46852099cce60ef700", size = 15378, upload-time = "2023-02-17T02:13:12.403Z" },
+]
+
+[[package]]
+name = "spike-001-flexoes"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pyglossary" },
+    { name = "python-idzip" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pyglossary", specifier = "==5.4.1" },
+    { name = "python-idzip", specifier = "==0.3.9" },
+]

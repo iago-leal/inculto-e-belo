@@ -8,16 +8,93 @@
   "doc_level": "completo",
   "output_folder": "_reversa_sdd",
   "forward_folder": "_reversa_forward",
-  "phase": null,
-  "completed": [],
-  "pending": [
+  "phase": "revisao",
+  "completed": [
     "reconhecimento",
     "escavacao",
     "interpretacao",
     "geracao",
     "revisao"
   ],
-  "checkpoints": {},
+  "pending": [],
+  "checkpoints": {
+    "scout": {
+      "completed_at": "2026-07-03T21:50:00Z",
+      "files": [
+        "_reversa_sdd/inventory.md",
+        "_reversa_sdd/dependencies.md",
+        ".reversa/context/surface.json"
+      ]
+    },
+    "archaeologist": {
+      "completed_at": "2026-07-03T22:05:00Z",
+      "modules_analyzed": ["banco-lexical", "governanca-operacional"],
+      "modules_pending": [],
+      "files": [
+        "_reversa_sdd/code-analysis.md",
+        "_reversa_sdd/data-dictionary.md",
+        "_reversa_sdd/flowcharts/banco-lexical.md",
+        "_reversa_sdd/flowcharts/governanca-operacional.md",
+        ".reversa/context/modules.json"
+      ]
+    },
+    "detective": {
+      "completed_at": "2026-07-03T22:20:00Z",
+      "files": [
+        "_reversa_sdd/domain.md",
+        "_reversa_sdd/state-machines.md",
+        "_reversa_sdd/permissions.md",
+        "_reversa_sdd/adrs/0001-sqlite-unico-normalizado.md",
+        "_reversa_sdd/adrs/0002-db-fora-do-git-backup-rclone.md",
+        "_reversa_sdd/adrs/0003-harness-core-no-upstream.md",
+        "_reversa_sdd/adrs/0004-specs-antes-de-codigo.md",
+        "_reversa_sdd/adrs/0005-spike-como-gate.md"
+      ]
+    },
+    "architect": {
+      "completed_at": "2026-07-03T22:35:00Z",
+      "files": [
+        "_reversa_sdd/architecture.md",
+        "_reversa_sdd/c4-context.md",
+        "_reversa_sdd/c4-containers.md",
+        "_reversa_sdd/c4-components.md",
+        "_reversa_sdd/erd-complete.md",
+        "_reversa_sdd/traceability/spec-impact-matrix.md"
+      ]
+    },
+    "writer": {
+      "completed_at": "2026-07-03T22:50:00Z",
+      "units": ["banco-lexical", "governanca-operacional"],
+      "files": [
+        "_reversa_sdd/banco-lexical/requirements.md",
+        "_reversa_sdd/banco-lexical/design.md",
+        "_reversa_sdd/banco-lexical/tasks.md",
+        "_reversa_sdd/banco-lexical/questions.md",
+        "_reversa_sdd/governanca-operacional/requirements.md",
+        "_reversa_sdd/governanca-operacional/design.md",
+        "_reversa_sdd/governanca-operacional/tasks.md",
+        "_reversa_sdd/user-stories/consulta-de-palavra.md",
+        "_reversa_sdd/user-stories/retomada-fria.md",
+        "_reversa_sdd/traceability/code-spec-matrix.md"
+      ]
+    },
+    "reviewer": {
+      "completed_at": "2026-07-03T23:05:00Z",
+      "reclassifications": 4,
+      "cross_review": "indisponivel (sem Codex)",
+      "regression_check": "pulado (nenhum regression-watch.md em _reversa_forward/)",
+      "files": [
+        "_reversa_sdd/confidence-report.md",
+        "_reversa_sdd/questions.md",
+        "_reversa_sdd/gaps.md"
+      ]
+    }
+  },
+  "redator_progress": {
+    "plan_total": 10,
+    "done": 10,
+    "last_file": "_reversa_sdd/traceability/code-spec-matrix.md"
+  },
   "engines": ["claude-code", "antigravity"],
   "agents": [
     "reversa",

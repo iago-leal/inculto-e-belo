@@ -1,0 +1,14 @@
+{"ts":"2026-07-03T21:27:26Z","action":"T001","status":"done","files":["spike/001-flexoes/pyproject.toml","spike/001-flexoes/uv.lock"],"nota":"requires-python ajustado para >=3.12 (exigência do pyglossary 5.4.1)"}
+{"ts":"2026-07-03T21:28:36Z","action":"T002","status":"done","files":["_reversa_forward/001-spike-de-flexoes/roteiro.md"],"nota":"20 palavras validadas no banco; 2 ambíguas e 4 lemas com homônimos incluídos de propósito"}
+{"ts":"2026-07-03T21:32:44Z","action":"T003","status":"done","files":["spike/001-flexoes/gerar_spike.py"]}
+{"ts":"2026-07-03T21:32:44Z","action":"T004","status":"done","files":["spike/001-flexoes/gerar_spike.py"]}
+{"ts":"2026-07-03T21:32:44Z","action":"T005","status":"done","files":["spike/001-flexoes/gerar_spike.py"]}
+{"ts":"2026-07-03T21:32:44Z","action":"T006","status":"done","files":["spike/001-flexoes/gerar_spike.py"]}
+{"ts":"2026-07-03T21:32:44Z","action":"T007","status":"done","files":["spike/001-flexoes/gerar_spike.py","spike/001-flexoes/dist/aurelio-spike-piloto/"],"nota":"piloto ok: synwordcount=588, .dict.dz com python-idzip==0.3.9 adicionado; RB-14 (split de vírgula/ou) incorporado ao mapeamento"}
+{"ts":"2026-07-03T21:34:30Z","action":"T008","status":"done","files":["spike/001-flexoes/dist/aurelio-spike/","spike/001-flexoes/medicao-geracao.txt"],"nota":"4,86s; RSS pico 462MB; wordcount=137784; synwordcount=774003 (desvio documentado: 900k era estimativa, 774k = 100% dos pares válidos)"}
+{"ts":"2026-07-03T21:35:02Z","action":"T011","status":"done","files":["spike/001-flexoes/README.md"]}
+{"ts":"2026-07-03T21:39:36Z","action":"preparacao-desktop","status":"note","files":[],"nota":"Teste preparatório no KOReader macOS (sdcv embutido): 20/20 formas do roteiro resolvem ao(s) lema(s) esperado(s); ambíguas listam múltiplos destinos; modo exato NÃO normaliza caixa/diacríticos (Árvores/Disse/cantavamos → nada), fuzzy resgata (Árvores→árvore, Disse→dizer); mediana 16ms no M-series (informativa, não vale para RN-05)"}
+{"ts":"2026-07-03T21:45:21Z","action":"T009","status":"skipped-by-user-decision","files":[],"nota":"instalação no Boox dispensada; usuário presume funcionamento (2026-07-03)"}
+{"ts":"2026-07-03T21:45:21Z","action":"T010","status":"skipped-by-user-decision","files":["_reversa_forward/001-spike-de-flexoes/roteiro.md"],"nota":"roteiro no dispositivo dispensado; validação preparatória desktop 20/20 registrada como evidência indireta"}
+{"ts":"2026-07-03T21:45:21Z","action":"T012","status":"done","files":["_reversa_forward/001-spike-de-flexoes/spike-report.md"],"nota":"veredito GO presumido; 4 OQs respondidas (2 plenas, 2 com pendência e-ink)"}
+{"ts":"2026-07-03T21:45:21Z","action":"T013","status":"done","files":["_reversa_forward/001-spike-de-flexoes/spike-report.md"],"nota":"desfecho GO: build completo destravado com monitoramento; fallbacks preservados"}

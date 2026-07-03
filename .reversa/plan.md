@@ -8,9 +8,9 @@
 
 ## Fase 1: Reconhecimento 🔍
 
-- [ ] **Scout** — Mapeamento de estrutura de pastas e tecnologias
-- [ ] **Scout** — Análise de dependências e gerenciadores de pacotes
-- [ ] **Scout** — Identificação de entry points, CI/CD e configurações
+- [x] **Scout** — Mapeamento de estrutura de pastas e tecnologias ✅
+- [x] **Scout** — Análise de dependências e gerenciadores de pacotes ✅
+- [x] **Scout** — Identificação de entry points, CI/CD e configurações ✅
 
 ## Decisão de organização das specs 🗂️
 
@@ -20,29 +20,30 @@
 
 > O Reversa preenche esta seção com os módulos reais após o Scout concluir o reconhecimento.
 
-- [ ] **Arqueólogo** — Análise dos módulos identificados pelo Scout
+- [x] **Arqueólogo** — Análise do módulo `banco-lexical` (schema e conteúdo do SQLite) ✅
+- [x] **Arqueólogo** — Análise do módulo `governanca-operacional` (shim harness, backup, gitignore) ✅
 
 ## Fase 3: Interpretação 🧠
 
-- [ ] **Detetive** — Arqueologia Git e ADRs retroativos
-- [ ] **Detetive** — Regras de negócio implícitas e máquinas de estado
-- [ ] **Detetive** — Matriz de permissões (RBAC/ACL)
-- [ ] **Arquiteto** — Diagramas C4 (Contexto, Containers, Componentes)
-- [ ] **Arquiteto** — ERD completo e integrações externas
-- [ ] **Arquiteto** — Spec Impact Matrix
+- [x] **Detetive** — Arqueologia Git e ADRs retroativos ✅
+- [x] **Detetive** — Regras de negócio implícitas e máquinas de estado ✅
+- [x] **Detetive** — Matriz de permissões (RBAC/ACL) ✅
+- [x] **Arquiteto** — Diagramas C4 (Contexto, Containers, Componentes) ✅
+- [x] **Arquiteto** — ERD completo e integrações externas ✅
+- [x] **Arquiteto** — Spec Impact Matrix ✅
 
 ## Fase 4: Geração 📝
 
-- [ ] **Redator** — Specs SDD por componente
-- [ ] **Redator** — OpenAPI (se aplicável)
-- [ ] **Redator** — User Stories (se aplicável)
-- [ ] **Redator** — Code/Spec Matrix
+- [x] **Redator** — Specs SDD por componente ✅ (units `banco-lexical/`, `governanca-operacional/`)
+- [x] **Redator** — OpenAPI (se aplicável) ✅ (n/a — sem API)
+- [x] **Redator** — User Stories (se aplicável) ✅ (consulta-de-palavra, retomada-fria)
+- [x] **Redator** — Code/Spec Matrix ✅
 
 ## Fase 5: Revisão ✅
 
-- [ ] **Revisor** — Revisão cruzada de specs
-- [ ] **Revisor** — Resolução de lacunas com o usuário
-- [ ] **Revisor** — Relatório de confiança final
+- [x] **Revisor** — Revisão cruzada de specs ✅ (Codex indisponível; revisão própria com amostragem no banco)
+- [x] **Revisor** — Resolução de lacunas com o usuário ✅ (4 lacunas resolvidas por amostragem; 1 pergunta opcional em questions.md)
+- [x] **Revisor** — Relatório de confiança final ✅ (~92%)
 
 ---
 
@@ -50,10 +51,10 @@
 
 > Execute estes agentes quando os recursos estiverem disponíveis — podem rodar em qualquer fase.
 
-- [ ] **Visor** — Análise de interface via screenshots
-- [ ] **Data Master** — Análise completa do banco de dados
-- [ ] **Design System** — Extração de tokens de design
-- [ ] **Tracer** — Análise dinâmica (requer sistema acessível)
+- [x] **Visor** — Análise de interface via screenshots ✅ (n/a — sem UI/screenshots)
+- [x] **Data Master** — Análise completa do banco de dados ✅ (absorvida: DDL completo, contagens, enums e ERD em `data-dictionary.md` + `erd-complete.md`)
+- [x] **Design System** — Extração de tokens de design ✅ (n/a — sem CSS/temas)
+- [x] **Tracer** — Análise dinâmica (requer sistema acessível) ✅ (n/a — não instalado; sistema é arquivo estático)
 
 ---
 
