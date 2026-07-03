@@ -1,28 +1,27 @@
 ---
-commit: ed1c173618d987c9124394be334cb934f6cd307d
+commit: 32fee473c4a13d1e6dc8333a441dad956ec239b0
 feature: default_feature
-start_time: '2026-07-03T20:10:31.381704+00:00'
+start_time: '2026-07-03T20:35:41.404564+00:00'
 status: inactive
 ---
 
 ## O que foi feito
-- Concluído o pipeline `/reversa-new`: executado o **reversa-spec-sdd**, último agente pendente, fechando o ciclo greenfield (ideator → researcher → drafter → spec-sdd).
-- PRD decomposto em 5 componentes, cada um com spec SDD em `_reversa_sdd/sdd/`, todas com score **100/100** no `spec_scorer.py` (relatório anexado ao fim de cada arquivo): `ingestao-aurelio`, `conversao-formato`, `indice-de-flexoes`, `validacao-paridade`, `distribuicao-webdav`.
-- Resolvidas as 4 decisões que o PRD deixara pendentes (registradas nos decision logs das specs): **PyGlossary 5.4.1 pinado** como gerador StarDict (verificado ativo na web); alvo de flexões = **100% das formas do banco**; **sem prazo**; banco **somente-leitura** (editar conteúdo confirmado como não-objetivo).
-- Achado que reduz a premissa de maior risco: o banco já contém `flexions` (175.259) e `conjugations` (869.119) com 99,9% de casamento com `entries.lemma` — o índice de flexões dispensa fonte externa; alimenta o `.syn` do StarDict.
-- Decisão de arquitetura da validação: parser StarDict de leitura **próprio em stdlib** (sem PyGlossary), para não validar a ferramenta com ela mesma; tolerância zero a divergências.
+- Iniciado o **ciclo forward** com `/reversa-forward`: decidida e persistida a organização das specs por **módulo de código** (`granularity = "module"` em `.reversa/config.toml`), alinhada à decomposição em 5 componentes já existente.
+- Criada a primeira feature forward, **`001-spike-de-flexoes`**, via `/reversa-requirements`: `requirements.md` com 8 RFs (6 Must + 2 Should oportunistas que aproveitam o spike para responder OQs da spec `conversao-formato`), 5 RNs, cenários Gherkin e MoSCoW.
+- Rodado `/reversa-clarify`: 5 respostas integradas, zero dúvidas restantes. Decisões do usuário: dispositivo-alvo **Boox Air 4C com KOReader**; critério de veredito pré-registrado (**RN-05**: NO-GO se mediana ≥ 1 s ou qualquer palavra ≥ 3 s); ordem fixa de fallbacks (reduzir `.syn` → dois dicionários → reabrir formato); composição do artefato (**143.376 headwords com corpo trivial** + verbete completo só para os 20 lemas do roteiro, `.syn` em escala real); medição por cronômetro com remedição por vídeo na faixa 0,8–1,2 s.
+- Registrada a feature ativa em `.reversa/active-requirements.json` (estágio físico: `requirements`, fechado e pronto para o plano).
 
 ## Próximos passos
-- Rodar `/reversa-forward` para iniciar o ciclo requirements → plan → to-do → coding a partir das specs.
-- Primeira tarefa natural do forward: **spike de flexões** — artefato mínimo instalado em dispositivo real, roteiro de 20 palavras flexionadas (valida latência do KOReader com `.syn` de ~1M de entradas, OQ-01 da spec indice-de-flexoes).
-- Verificar na infra do `koreader-notas` o caminho/autenticação exatos do WebDAV (OQ-01 da spec distribuicao-webdav) antes do reversa-plan.
+- Rodar `/reversa-plan` para a feature `001-spike-de-flexoes`: virar o requirements em roadmap, investigação e interfaces do spike.
+- Depois: `/reversa-to-do` → `/reversa-coding` (gerar artefato, instalar no Boox, executar roteiro de 20 palavras, redigir `spike-report.md` com veredito GO/NO-GO).
+- Verificar na infra do `koreader-notas` o caminho/autenticação exatos do WebDAV (OQ-01 da spec distribuicao-webdav) — necessário só quando o plano chegar à distribuição, não ao spike.
 
 ## Pendências / bloqueios
-- Open questions das specs a resolver em spike/plan: modo de escrita do PyGlossary (streaming vs. memória); subconjunto de HTML que o popup do KOReader renderiza bem em e-ink; normalização de caixa/diacríticos no lookup do `.syn`; download/extração de zip por plataforma (Kindle vs. Android).
-- Nenhum bloqueio: pipeline `/reversa-new` está `done` em `.reversa/state.json`.
+- Nenhum bloqueio. O spike foi desenhado justamente para resolver as open questions restantes: OQ-01/OQ-02 da `indice-de-flexoes` (latência do `.syn` em escala real; normalização de caixa/diacríticos) e, oportunisticamente, OQ-01/OQ-02 da `conversao-formato` (memória da geração; HTML no popup e-ink).
+- O veredito do spike é gate: NO-GO aciona os fallbacks de RN-05 antes de qualquer investimento no build completo.
 
 ## Ponteiros
-- Specs SDD: `_reversa_sdd/sdd/*.md` (5 arquivos, selo 🟡, score anexado).
-- Pipeline greenfield completo: `_reversa_sdd/{newproject-brief,ideation,personas,prd}.md`.
-- Estado: `.reversa/state.json#newproject_progress` (`stage: done`, 4 estágios concluídos).
-- Esquema real do banco levantado nesta sessão: tabelas e contagens citadas nas seções de evidência das specs.
+- Feature ativa: `_reversa_forward/001-spike-de-flexoes/requirements.md` (fechado, 0 dúvidas) e `.reversa/active-requirements.json`.
+- Decisão de organização das specs: `.reversa/config.toml#[specs]` (`module`, decidida em 2026-07-03).
+- Specs SDD de referência: `_reversa_sdd/sdd/*.md`, em especial `indice-de-flexoes.md` (fluxo alternativo A = este spike) e `conversao-formato.md` (decision log da ferramenta pinada).
+- Critério de veredito e fallbacks: seção 4 (RN-05) e seção 9 (Sessão 2026-07-03) do `requirements.md` da feature.
