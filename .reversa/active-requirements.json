@@ -1,9 +1,9 @@
 {
   "schema-version": 1,
-  "feature-dir": "_reversa_forward/001-spike-de-flexoes",
-  "feature-id": "001",
-  "short-name": "spike-de-flexoes",
-  "started-at": "2026-07-03T20:39:12Z",
+  "feature-dir": "_reversa_forward/002-build-completo-de-producao",
+  "feature-id": "002",
+  "short-name": "build-completo-de-producao",
+  "started-at": "2026-07-03T21:56:52Z",
   "current-stage": "done",
   "stages-completed": ["requirements", "clarify", "plan", "to-do", "coding"],
   "paused-features": []
