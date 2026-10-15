@@ -1,10 +1,14 @@
 {
   "schema-version": 1,
-  "feature-dir": "_reversa_forward/002-build-completo-de-producao",
-  "feature-id": "002",
-  "short-name": "build-completo-de-producao",
-  "started-at": "2026-07-03T21:56:52Z",
-  "current-stage": "done",
-  "stages-completed": ["requirements", "clarify", "plan", "to-do", "coding"],
+  "feature-dir": "_reversa_forward/003-dicionario-readest",
+  "feature-id": "003",
+  "short-name": "dicionario-readest",
+  "started-at": "2026-10-15T09:55:00Z",
+  "current-stage": "plan",
+  "stages-completed": [
+    "requirements",
+    "clarify",
+    "plan"
+  ],
   "paused-features": []
 }
