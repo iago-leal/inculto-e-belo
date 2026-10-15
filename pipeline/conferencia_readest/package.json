@@ -1,0 +1,10 @@
+{
+  "name": "aurelio-conferencia-readest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Conferência do artefato do alvo Readest com o código de busca do próprio Readest (feature 003, RF-06)",
+  "type": "module",
+  "dependencies": {
+    "fflate": "0.8.3"
+  }
+}

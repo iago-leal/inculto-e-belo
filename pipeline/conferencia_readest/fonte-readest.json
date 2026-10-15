@@ -1,0 +1,36 @@
+{
+  "repositorio": "readest/readest",
+  "tag": "v0.12.16",
+  "commit": "3cc39ad7a558e6612e1a8135058fbd6f3c90b3e3",
+  "base": "apps/readest-app/src/services/dictionaries/",
+  "arquivos": {
+    "stardictReader.ts": "affa164d360f285988d6dbf2816c9e217193c3ce6ff3f733a265d891fbfd1418",
+    "dictZip.ts": "2e8f5448adbf9f9456201e4afb83a6c20209f6bba37cf4539ad51b3f7e691b33"
+  },
+  "reescritas": [
+    {
+      "arquivo": "stardictReader.ts",
+      "motivo": "a execução nativa de TypeScript exige a extensão no especificador relativo",
+      "de": "'./dictZip'",
+      "para": "'./dictZip.ts'"
+    },
+    {
+      "arquivo": "dictZip.ts",
+      "motivo": "propriedade de parâmetro não é sintaxe apagável; vira campo declarado e atribuição no início do construtor (mesma semântica)",
+      "de": "  constructor(private readonly buf: Uint8Array) {}\n",
+      "para": "  private readonly buf: Uint8Array;\n  constructor(buf: Uint8Array) {\n    this.buf = buf;\n  }\n"
+    },
+    {
+      "arquivo": "dictZip.ts",
+      "motivo": "idem, no construtor do corpo por blocos",
+      "de": "  constructor(\n    private readonly blob: Blob,\n    private readonly meta: DictZipMeta,\n    cacheSize: number,\n  ) {\n",
+      "para": "  private readonly blob: Blob;\n  private readonly meta: DictZipMeta;\n\n  constructor(\n    blob: Blob,\n    meta: DictZipMeta,\n    cacheSize: number,\n  ) {\n    this.blob = blob;\n    this.meta = meta;\n"
+    }
+  ],
+  "arquivos_reescritos": {
+    "stardictReader.ts": "244b1509fdc93aa005931cd8cf17326ad529cc939a27b670aba7849dbd671653",
+    "dictZip.ts": "677e4fc558fbe362a5333b1ccc9207d528cfa0a885883a7571595842172d6880"
+  },
+  "fflate": "0.8.3",
+  "node_minimo": "22.18"
+}

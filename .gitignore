@@ -28,3 +28,8 @@ spike/*/geracao-stdout.txt
 dist/
 pipeline/.venv/
 pipeline/.coverage
+
+# Conferência do alvo Readest (feature 003) — código de busca do Readest baixado
+# (AGPL-3.0, não redistribuído) e dependências npm, ambos regeneráveis
+pipeline/conferencia_readest/.cache/
+pipeline/conferencia_readest/node_modules/

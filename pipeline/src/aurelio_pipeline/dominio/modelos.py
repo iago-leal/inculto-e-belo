@@ -1,6 +1,7 @@
 """Contratos internos entre camadas (data-delta.md §3; specs §9 dos componentes)."""
 
 from dataclasses import dataclass, field
+from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -88,5 +89,82 @@ class RelatorioCobertura:
 class ResultadoBuild:
     headwords: int
     sinonimos: int
+    duracao_s: float
+    arquivos: dict[str, int] = field(default_factory=dict)
+
+
+# --- alvo Readest (feature 003; data-delta.md §4) ----------------------------
+
+DESTINOS_READEST = ("idx-lema", "idx-forma-combinada", "idx-forma-direta", "syn")
+
+
+@dataclass(frozen=True)
+class PaginaReadest:
+    """Uma chave pesquisável do alvo Readest e a página que ela abre.
+
+    chave: comparação do Readest (minúsculas); grafia: o que o índice grava;
+    lemas: sequência de artigos na ordem de exibição (RN-04); destino: onde a
+    chave entra no índice (D-09).
+    """
+
+    chave: str
+    grafia: str
+    lemas: tuple[str, ...]
+    destino: str
+
+    @property
+    def combinada(self) -> bool:
+        return len(self.lemas) > 1
+
+
+@dataclass
+class PlanoPaginas:
+    """Saída do agrupamento: páginas em ordem de índice (comparação do Readest)."""
+
+    paginas: list[PaginaReadest]
+
+    def do_idx(self) -> list[PaginaReadest]:
+        return [p for p in self.paginas if p.destino != "syn"]
+
+    def do_syn(self) -> list[PaginaReadest]:
+        return [p for p in self.paginas if p.destino == "syn"]
+
+
+@dataclass
+class RelatorioAgrupamento:
+    chaves: int
+    paginas_simples: int
+    paginas_combinadas: int
+    sequencias_distintas: int
+    descartes_sem_letra: int
+    formas_descartadas: list[dict[str, str]]
+    artigos_por_pagina: dict[int, int]
+    indice: dict[str, int]
+
+    def to_dict(self) -> dict:
+        return {
+            "chaves": self.chaves,
+            "paginas_simples": self.paginas_simples,
+            "paginas_combinadas": self.paginas_combinadas,
+            "sequencias_distintas": self.sequencias_distintas,
+            "descartes_sem_letra": self.descartes_sem_letra,
+            "formas_descartadas": [dict(f) for f in self.formas_descartadas],
+            "artigos_por_pagina": {
+                str(n): total for n, total in sorted(self.artigos_por_pagina.items())
+            },
+            "indice": dict(self.indice),
+        }
+
+
+@dataclass
+class ResultadoEscritaReadest:
+    idx: int
+    syn: int
+    trechos: int
+    bytes_corpo: int
+    impressao_digital: str
+    preparo: Path
+    artefato: Path
+    expectativa: Path
     duracao_s: float
     arquivos: dict[str, int] = field(default_factory=dict)

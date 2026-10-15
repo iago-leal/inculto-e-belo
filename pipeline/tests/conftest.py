@@ -4,6 +4,7 @@ O banco nasce em tmp_path (arquivo) porque o repositório abre por URI mode=ro;
 a criação é rápida o suficiente para manter a suíte abaixo de 2 minutos.
 Dados cobrem os casos exigidos por T004: homônimos, RB-14 (vírgula e " ou "),
 órfã, ambígua, idêntica ao lema e um verbete rico com todas as seções.
+most_used (feature 003): belo marcado; manga só no homônimo 2.
 """
 
 import json
@@ -79,7 +80,7 @@ INSERT INTO entries VALUES
   '<em>Do lat. bellu.</em>','Do lat. bellu.',1,1,'belo'),
  (2,'bela',NULL,'bela',NULL,NULL,'s.f.',NULL,NULL,NULL,NULL,1,NULL,'bela'),
  (3,'manga',NULL,'manga',NULL,1,'s.f.',NULL,NULL,NULL,NULL,1,NULL,'manga'),
- (4,'manga',NULL,'manga',NULL,2,'s.f.',NULL,NULL,NULL,NULL,1,NULL,'manga'),
+ (4,'manga',NULL,'manga',NULL,2,'s.f.',NULL,NULL,NULL,NULL,1,1,'manga'),
  (5,'amar',NULL,'amar',NULL,NULL,'v.t.d.',NULL,NULL,NULL,NULL,1,NULL,'amar');
 
 INSERT INTO word_classes VALUES

@@ -1,7 +1,7 @@
 [project]
 name = "aurelio-pipeline"
 version = "1.0.0"
-description = "Pipeline de produção do dicionário StarDict do Aurélio — feature 002-build-completo-de-producao"
+description = "Pipeline de produção dos dicionários StarDict do Aurélio para o KOReader e o Readest — features 002 e 003"
 requires-python = ">=3.12"
 dependencies = [
     "pyglossary==5.4.1",
@@ -23,3 +23,8 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/aurelio_pipeline"]
+
+[tool.pytest.ini_options]
+markers = [
+    "integracao: executa o código real do Readest (exige Node e o cache da conferência)",
+]

@@ -55,3 +55,15 @@ class ArtefatoAusenteError(ErroPipeline):
 
 class ArtefatoCorrompidoError(ErroPipeline):
     """Estrutura binária inválida no .idx/.syn/.dict.dz (EC-02/EC-03 da paridade)."""
+
+
+# --- conferencia-readest ------------------------------------------------------
+
+
+class AmbienteConferenciaError(ErroPipeline):
+    """Ambiente da conferência com o código do Readest indisponível (D-14, RF-06 da 003).
+
+    Node ausente ou abaixo do mínimo, npm ausente, falha HTTP na primeira obtenção,
+    hash divergente, `npm ci` falho ou falha de execução do roteiro. A mensagem diz
+    o que faltou e como resolver; nada é promovido.
+    """

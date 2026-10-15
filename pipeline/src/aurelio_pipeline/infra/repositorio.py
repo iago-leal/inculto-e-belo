@@ -43,6 +43,7 @@ COLUNAS_REQUERIDAS: dict[str, set[str]] = {
         "ipa",
         "etymology_html",
         "sort_key",
+        "most_used",  # vocabulário frequente: ordena as páginas do Readest (003, D-18)
     },
     "word_class_blocks": {"id", "entry_id", "word_class_id", "position", "intro_text"},
     "word_classes": {"id", "whole"},
@@ -221,6 +222,16 @@ class RepositorioAurelio:
                 "SELECT DISTINCT lemma FROM entries ORDER BY lemma"
             )
         ]
+
+    def lemas_frequentes(self) -> frozenset[str]:
+        """Lemas com ao menos uma entrada homônima marcada como vocabulário frequente."""
+        conn = self._abrir()
+        return frozenset(
+            linha["lemma"]
+            for linha in conn.execute(
+                "SELECT DISTINCT lemma FROM entries WHERE most_used = 1"
+            )
+        )
 
     def flexoes(self) -> Iterator[tuple[int, str, str]]:
         conn = self._abrir()

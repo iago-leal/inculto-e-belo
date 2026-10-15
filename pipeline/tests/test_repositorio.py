@@ -138,3 +138,22 @@ class TestConsultas:
             "Fruta da mangueira",
             "Parte da camisa que cobre o braço",
         ]
+
+
+class TestVocabularioFrequente:
+    """Feature 003 (D-18, data-delta.md §1): most_used ordena as páginas do Readest."""
+
+    def test_most_used_e_coluna_requerida(self, tmp_path, manifesto_path):
+        from conftest import SCHEMA
+
+        caminho = tmp_path / "sem-most-used.db"
+        conn = sqlite3.connect(caminho)
+        conn.executescript(SCHEMA.replace("most_used INTEGER, ", ""))
+        conn.commit()
+        conn.close()
+        with pytest.raises(EsquemaInvalidoError, match=r"entries: most_used"):
+            RepositorioAurelio(caminho, manifesto_path).validar()
+
+    def test_lema_frequente_se_algum_homonimo_e_marcado(self, db_path, manifesto_path):
+        repo = RepositorioAurelio(db_path, manifesto_path)
+        assert repo.lemas_frequentes() == frozenset({"belo", "manga"})
