@@ -41,8 +41,8 @@ Todos saem com exit code 2 e são verificados antes do build (D-14).
 ## 3. Preparação do cache
 
 1. Baixar os arquivos para `pipeline/conferencia_readest/.cache/v0.12.16/`, conferindo o hash do original.
-2. Em `stardictReader.ts`, trocar o especificador `'./dictZip'` por `'./dictZip.ts'`, exigência da execução nativa de TypeScript; exatamente uma ocorrência, senão erro nomeado.
-3. Gravar um marcador `.pronto` com os hashes do original e do arquivo reescrito; cache sem marcador é refeito.
+2. Aplicar as reescritas mecânicas listadas em `fonte-readest.json#reescritas`, cada uma com exatamente uma ocorrência, senão erro nomeado: em `stardictReader.ts`, o especificador `'./dictZip'` vira `'./dictZip.ts'`; em `dictZip.ts`, as duas propriedades de parâmetro de construtor (`private readonly buf`, `private readonly blob` e `private readonly meta`) viram campos declarados com atribuição no início do construtor, com a mesma semântica. A remoção nativa de tipos do Node recusa propriedades de parâmetro, e o Node 26 não oferece mais o modo de transformação.
+3. Conferir o SHA-256 de cada arquivo reescrito contra `fonte-readest.json#arquivos_reescritos` e gravar um marcador `.pronto` com os hashes do original e do reescrito; cache sem marcador é refeito.
 
 ## 4. Execução por subprocesso
 

@@ -4,11 +4,12 @@
   "feature-id": "003",
   "short-name": "dicionario-readest",
   "started-at": "2026-10-15T09:55:00Z",
-  "current-stage": "plan",
+  "current-stage": "coding",
   "stages-completed": [
     "requirements",
     "clarify",
-    "plan"
+    "plan",
+    "to-do"
   ],
   "paused-features": []
 }

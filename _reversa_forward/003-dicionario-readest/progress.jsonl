@@ -1,0 +1,23 @@
+{"ts": "2026-10-15T10:37:49Z", "action": "T001", "status": "done", "files": ["pipeline/src/aurelio_pipeline/erros.py"]}
+{"ts": "2026-10-15T10:37:49Z", "action": "T002", "status": "done", "files": [".gitignore", "pipeline/pyproject.toml"]}
+{"ts": "2026-10-15T10:37:49Z", "action": "T003", "status": "done", "files": ["pipeline/conferencia_readest/fonte-readest.json", "pipeline/conferencia_readest/package.json", "pipeline/conferencia_readest/package-lock.json"]}
+{"ts": "2026-10-15T10:38:09Z", "action": "T004", "status": "done", "files": ["pipeline/src/aurelio_pipeline/dominio/modelos.py"]}
+{"ts": "2026-10-15T10:38:34Z", "action": "T005", "status": "done", "files": ["pipeline/tests/test_repositorio.py", "pipeline/tests/conftest.py"]}
+{"ts": "2026-10-15T10:40:53Z", "action": "T006", "status": "done", "files": ["pipeline/tests/test_agrupamento_readest.py"]}
+{"ts": "2026-10-15T10:43:01Z", "action": "T007", "status": "done", "files": ["pipeline/tests/test_escrita_readest.py"]}
+{"ts": "2026-10-15T10:43:01Z", "action": "T008", "status": "done", "files": ["pipeline/tests/test_paridade_readest.py"]}
+{"ts": "2026-10-15T10:43:01Z", "action": "T009", "status": "done", "files": ["pipeline/tests/test_conferencia_readest.py"]}
+{"ts": "2026-10-15T10:43:51Z", "action": "T010", "status": "done", "files": ["pipeline/src/aurelio_pipeline/infra/repositorio.py"]}
+{"ts": "2026-10-15T10:44:29Z", "action": "T011", "status": "done", "files": ["pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py"]}
+{"ts": "2026-10-15T10:45:23Z", "action": "T012", "status": "done", "files": ["pipeline/src/aurelio_pipeline/infra/escrita_readest.py", "pipeline/tests/test_escrita_readest.py"]}
+{"ts": "2026-10-15T10:45:23Z", "action": "T013", "status": "done", "files": ["pipeline/src/aurelio_pipeline/infra/escrita_readest.py"]}
+{"ts": "2026-10-15T10:47:03Z", "action": "T014", "status": "done", "files": ["pipeline/src/aurelio_pipeline/validacao/paridade_readest.py"]}
+{"ts": "2026-10-15T10:48:28Z", "action": "T015", "status": "done", "files": ["pipeline/conferencia_readest/conferir.ts"]}
+{"ts": "2026-10-15T10:48:28Z", "action": "T016", "status": "done", "files": ["pipeline/src/aurelio_pipeline/infra/conferencia_readest.py", "pipeline/pyproject.toml"]}
+{"ts": "2026-10-15T10:49:10Z", "action": "T017", "status": "done", "files": ["pipeline/src/aurelio_pipeline/cli.py"]}
+{"ts": "2026-10-15T10:49:34Z", "action": "T018", "status": "done", "files": ["pipeline/tests/"]}
+{"ts": "2026-10-15T10:51:08Z", "action": "T019", "status": "done", "files": ["dist/readest/", "dist/aurelio-stardict/"]}
+{"ts": "2026-10-15T10:52:30Z", "action": "T020", "status": "done", "files": ["dist/readest/"]}
+{"ts": "2026-10-15T10:53:44Z", "action": "T022", "status": "done", "files": ["pipeline/tests/"]}
+{"ts": "2026-10-15T10:54:37Z", "action": "T023", "status": "done", "files": ["pipeline/README.md"]}
+{"ts": "2026-10-15T10:56:01Z", "action": "T021", "status": "blocked", "files": []}

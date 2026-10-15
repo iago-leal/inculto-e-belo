@@ -1,0 +1,27 @@
+{
+  "schema-version": 1,
+  "started-at": "2026-10-15T10:31:00Z",
+  "status": "blocked",
+  "answers": {
+    "target": "sync",
+    "doubts": "file",
+    "optional-stages": false,
+    "on-failure": "stop",
+    "readest-import": "agent-computer-use",
+    "git-at-end": "commit-and-push-feature-files-only"
+  },
+  "queue": [
+    {
+      "item": "003-dicionario-readest",
+      "feature-dir": "_reversa_forward/003-dicionario-readest",
+      "status": "blocked",
+      "last-stage": "coding-em-progresso",
+      "note": "22/23 ações; T021 (importar e conferir no Readest do Mac, RF-08) bloqueada: sessão sem controle de tela do desktop. Sync aguarda a T021 (não gera adendo parcial)."
+    }
+  ],
+  "warnings": [
+    "T003: o Node 26 recusa propriedades de parâmetro de construtor no dictZip.ts do Readest e não oferece mais o modo de transformação; a conferência passou de uma para três reescritas mecânicas, cada uma com exatamente uma ocorrência e hash do resultado versionado (fonte-readest.json). Sem dependência nova. Contrato atualizado em interfaces/conferencia-readest.md §3.",
+    "T012: teste do escritor corrigido; um artigo aparece uma vez por sequência distinta que o contém (D-08), e não uma vez no corpo inteiro.",
+    "T023 executada antes da T021 (dependência invertida): rótulos do Readest tirados do código-fonte da versão instalada 0.12.12; a T021 confirma."
+  ]
+}
