@@ -25,7 +25,16 @@
 
 ## Histórico de re-extrações
 
-_(vazio — preenchido pelo step-04 do `/reversa` nas próximas extrações)_
+### Re-extração 2026-10-15 11:30
+
+| ID | Veredito | Observação |
+|----|----------|------------|
+| W001 | 🟢 verde | RB-11 em `domain.md` §3 com a ressalva da nuvem privada; `bookname` com «uso pessoal»; `dist/` ignorado; testes só com dados sintéticos |
+| W002 | 🟢 verde | `domain.md` §4 traz 887.546 / 160.302 / 727.244 / 22.913 / 16.910 / 261; manifesto sem commit novo |
+| W003 | 🟢 verde | RB-12 em `domain.md` §3: bytes idênticos entre gerações, `.ifo` com a data do manifesto e a impressão digital, três relatórios por execução |
+| W004 | 🟢 verde | RB-02 em `domain.md` §3 descreve a fusão só no artefato; os dois alvos usam o mesmo `renderizar_artigo`, renderizado uma vez em `cli.py:231` |
+| W005 | 🟢 verde | R-01, R-02 e os adaptadores do Readest em `architecture.md` §2; `paridade_readest.py` não importa agrupamento nem escritor; PyGlossary só no alvo KOReader; subprocess só em `conferencia_readest.py` |
+| W006 | 🟢 verde | RB-10 em `domain.md` §3 cobre os dois alvos; `most_used` só em SELECT de `infra/repositorio.py`; nenhuma escrita no `.db` |
 
 ## Arquivadas
 

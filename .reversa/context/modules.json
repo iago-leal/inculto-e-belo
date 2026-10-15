@@ -1,39 +1,89 @@
 {
-  "generated_at": "2026-07-03T22:05:00Z",
+  "generated_at": "2026-10-15T14:40:00Z",
   "modules": [
     {
       "name": "banco-lexical",
       "path": "aurelio_normalized.db",
       "purpose": "Léxico do Aurélio normalizado: 14 tabelas de domínio + FTS5, hierarquia verbete → blocos de classe → acepções, com flexões e conjugações ligadas por texto ao lema",
-      "primary_files": ["aurelio_normalized.db"],
+      "primary_files": [
+        "aurelio_normalized.db"
+      ],
       "functions": [],
       "entities": [
         {
           "name": "entries",
           "fields": [
-            { "name": "lemma", "type": "TEXT", "required": true },
-            { "name": "slug", "type": "TEXT", "required": true },
-            { "name": "homonym", "type": "INTEGER", "required": false },
-            { "name": "word_class_summary", "type": "TEXT", "required": false },
-            { "name": "ipa", "type": "TEXT", "required": false },
-            { "name": "etymology_html", "type": "TEXT", "required": false },
-            { "name": "head_type", "type": "INTEGER", "required": false },
-            { "name": "most_used", "type": "INTEGER", "required": false },
-            { "name": "sort_key", "type": "TEXT", "required": false }
+            {
+              "name": "lemma",
+              "type": "TEXT",
+              "required": true
+            },
+            {
+              "name": "slug",
+              "type": "TEXT",
+              "required": true
+            },
+            {
+              "name": "homonym",
+              "type": "INTEGER",
+              "required": false
+            },
+            {
+              "name": "word_class_summary",
+              "type": "TEXT",
+              "required": false
+            },
+            {
+              "name": "ipa",
+              "type": "TEXT",
+              "required": false
+            },
+            {
+              "name": "etymology_html",
+              "type": "TEXT",
+              "required": false
+            },
+            {
+              "name": "head_type",
+              "type": "INTEGER",
+              "required": false
+            },
+            {
+              "name": "most_used",
+              "type": "INTEGER",
+              "required": false
+            },
+            {
+              "name": "sort_key",
+              "type": "TEXT",
+              "required": false
+            }
           ],
           "confidence": "confirmed"
         },
         {
           "name": "word_class_blocks",
           "fields": [
-            { "name": "entry_id", "type": "FK entries", "required": true },
+            {
+              "name": "entry_id",
+              "type": "FK entries",
+              "required": true
+            },
             {
               "name": "word_class_id",
               "type": "FK word_classes",
               "required": false
             },
-            { "name": "position", "type": "INTEGER", "required": true },
-            { "name": "intro_text", "type": "TEXT", "required": false }
+            {
+              "name": "position",
+              "type": "INTEGER",
+              "required": true
+            },
+            {
+              "name": "intro_text",
+              "type": "TEXT",
+              "required": false
+            }
           ],
           "confidence": "confirmed"
         },
@@ -45,11 +95,31 @@
               "type": "FK word_class_blocks",
               "required": true
             },
-            { "name": "position", "type": "INTEGER", "required": true },
-            { "name": "number", "type": "TEXT", "required": false },
-            { "name": "content_html", "type": "TEXT", "required": true },
-            { "name": "content_text", "type": "TEXT", "required": true },
-            { "name": "rubric_id", "type": "FK rubrics", "required": false }
+            {
+              "name": "position",
+              "type": "INTEGER",
+              "required": true
+            },
+            {
+              "name": "number",
+              "type": "TEXT",
+              "required": false
+            },
+            {
+              "name": "content_html",
+              "type": "TEXT",
+              "required": true
+            },
+            {
+              "name": "content_text",
+              "type": "TEXT",
+              "required": true
+            },
+            {
+              "name": "rubric_id",
+              "type": "FK rubrics",
+              "required": false
+            }
           ],
           "confidence": "confirmed"
         },
@@ -71,7 +141,11 @@
               "type": "TEXT CHECK editor|citation",
               "required": true
             },
-            { "name": "content_html", "type": "TEXT", "required": true }
+            {
+              "name": "content_html",
+              "type": "TEXT",
+              "required": true
+            }
           ],
           "confidence": "confirmed"
         },
@@ -88,36 +162,84 @@
               "type": "INTEGER (polimórfica)",
               "required": true
             },
-            { "name": "content_html", "type": "TEXT", "required": true }
+            {
+              "name": "content_html",
+              "type": "TEXT",
+              "required": true
+            }
           ],
           "confidence": "confirmed"
         },
         {
           "name": "locutions",
           "fields": [
-            { "name": "entry_id", "type": "FK entries", "required": true },
-            { "name": "expression", "type": "TEXT", "required": true },
-            { "name": "rubric_id", "type": "FK rubrics", "required": false }
+            {
+              "name": "entry_id",
+              "type": "FK entries",
+              "required": true
+            },
+            {
+              "name": "expression",
+              "type": "TEXT",
+              "required": true
+            },
+            {
+              "name": "rubric_id",
+              "type": "FK rubrics",
+              "required": false
+            }
           ],
           "confidence": "confirmed"
         },
         {
           "name": "locution_definitions",
           "fields": [
-            { "name": "locution_id", "type": "FK locutions", "required": true },
-            { "name": "content_html", "type": "TEXT", "required": true }
+            {
+              "name": "locution_id",
+              "type": "FK locutions",
+              "required": true
+            },
+            {
+              "name": "content_html",
+              "type": "TEXT",
+              "required": true
+            }
           ],
           "confidence": "confirmed"
         },
         {
           "name": "verb_rection",
           "fields": [
-            { "name": "entry_id", "type": "FK entries", "required": true },
-            { "name": "sense", "type": "INTEGER", "required": false },
-            { "name": "transitivity", "type": "TEXT", "required": false },
-            { "name": "prepositions", "type": "TEXT CSV", "required": false },
-            { "name": "observation", "type": "TEXT", "required": false },
-            { "name": "source", "type": "TEXT DEFAULT luft", "required": true }
+            {
+              "name": "entry_id",
+              "type": "FK entries",
+              "required": true
+            },
+            {
+              "name": "sense",
+              "type": "INTEGER",
+              "required": false
+            },
+            {
+              "name": "transitivity",
+              "type": "TEXT",
+              "required": false
+            },
+            {
+              "name": "prepositions",
+              "type": "TEXT CSV",
+              "required": false
+            },
+            {
+              "name": "observation",
+              "type": "TEXT",
+              "required": false
+            },
+            {
+              "name": "source",
+              "type": "TEXT DEFAULT luft",
+              "required": true
+            }
           ],
           "confidence": "confirmed"
         },
@@ -129,13 +251,21 @@
               "type": "TEXT (ligação textual com entries.lemma)",
               "required": true
             },
-            { "name": "flexion", "type": "TEXT", "required": true },
+            {
+              "name": "flexion",
+              "type": "TEXT",
+              "required": true
+            },
             {
               "name": "type",
               "type": "INTEGER (semântica não documentada)",
               "required": false
             },
-            { "name": "homonym", "type": "INTEGER", "required": false }
+            {
+              "name": "homonym",
+              "type": "INTEGER",
+              "required": false
+            }
           ],
           "confidence": "confirmed"
         },
@@ -147,27 +277,43 @@
               "type": "TEXT (ligação textual com entries.lemma)",
               "required": true
             },
-            { "name": "tense", "type": "INTEGER 1-13", "required": true },
+            {
+              "name": "tense",
+              "type": "INTEGER 1-13",
+              "required": true
+            },
             {
               "name": "person",
               "type": "TEXT eu|tu|ele|nós|vós|eles|vazio",
               "required": false
             },
-            { "name": "conjugation", "type": "TEXT", "required": true }
+            {
+              "name": "conjugation",
+              "type": "TEXT",
+              "required": true
+            }
           ],
           "confidence": "confirmed"
         },
         {
           "name": "rubrics",
           "fields": [
-            { "name": "abbreviation/whole", "type": "TEXT", "required": true }
+            {
+              "name": "abbreviation/whole",
+              "type": "TEXT",
+              "required": true
+            }
           ],
           "confidence": "confirmed"
         },
         {
           "name": "word_classes",
           "fields": [
-            { "name": "abbreviation/whole", "type": "TEXT", "required": true }
+            {
+              "name": "abbreviation/whole",
+              "type": "TEXT",
+              "required": true
+            }
           ],
           "confidence": "confirmed"
         },
@@ -229,6 +375,16 @@
           "description": "FTS5 external content com remoção de diacríticos (unicode61 remove_diacritics 2; porter em definições)",
           "location": "DDL fts_entries/fts_definitions",
           "confidence": "confirmed"
+        },
+        {
+          "description": "entries.most_used é lida pelo pipeline e ordena artigos não coincidentes nas páginas combinadas do Readest",
+          "location": "pipeline/src/aurelio_pipeline/infra/repositorio.py:226",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "O HTML do banco não contém <hr>; o alvo Readest usa essa tag como fronteira de artigos e a validação reprova se a premissa falhar",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_readest.py:35",
+          "confidence": "confirmed"
         }
       ],
       "dependencies": [],
@@ -238,18 +394,31 @@
         "Semântica de flexions.type (valores 1-5) não documentada",
         "Semântica de entries.head_type (valores 1-4) não documentada",
         "Mapa numérico tense 1-13 → nome do tempo verbal não documentado"
+      ],
+      "consumers": [
+        "pipeline-nucleo",
+        "spike-001-flexoes"
       ]
     },
     {
       "name": "governanca-operacional",
       "path": ".",
       "purpose": "Operação do ativo: shim do Harness, backup/restauração via rclone, exclusão do .db no git",
-      "primary_files": ["harness", "harness.toml", ".gitignore", "README.md"],
+      "primary_files": [
+        ".gitignore",
+        "README.md",
+        "harness",
+        "harness.toml",
+        "pipeline/README.md",
+        "spike/001-flexoes/README.md"
+      ],
       "functions": [
         {
           "name": "harness (shim)",
           "file": "harness",
-          "params": ["$@ repassados ao core"],
+          "params": [
+            "$@ repassados ao core"
+          ],
           "returns": "exec do core Python no upstream ou exit 1",
           "confidence": "confirmed"
         }
@@ -265,12 +434,603 @@
           "description": "Fonte de verdade é a cópia local; proveniência via sqlite3 .backup com integrity_check ok",
           "location": "README.md §Proveniência",
           "confidence": "confirmed"
+        },
+        {
+          "description": "[regen] do harness.toml regenera só o alvo KOReader (cd pipeline && uv run aurelio-pipeline)",
+          "location": "harness.toml:13",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Banco mudado exige atualizar manifesto-integridade.json em commit próprio; sem isso o build para com ContagemDivergenteError",
+          "location": "pipeline/README.md (Quando o banco mudar)",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "dist/, spike/*/dist/, ambientes locais, cache do código do Readest e node_modules ficam fora do git",
+          "location": ".gitignore",
+          "confidence": "confirmed"
         }
       ],
-      "dependencies": ["~/dev/harness (upstream do core)"],
+      "dependencies": [
+        "~/dev/harness (upstream do core)"
+      ],
       "algorithms": [],
       "complexity": "low",
-      "gaps": ["README lista 8 das 14 tabelas de domínio (desatualizado)"]
+      "gaps": [
+        "README lista 8 das 14 tabelas de domínio (desatualizado)"
+      ]
+    },
+    {
+      "name": "pipeline-nucleo",
+      "path": "pipeline/src/aurelio_pipeline",
+      "purpose": "CLI e orquestração, ingestão somente-leitura com manifesto, índice de flexões e renderização de artigos, comuns aos alvos KOReader e Readest",
+      "primary_files": [
+        "pipeline/src/aurelio_pipeline/cli.py",
+        "pipeline/src/aurelio_pipeline/erros.py",
+        "pipeline/src/aurelio_pipeline/dominio/modelos.py",
+        "pipeline/src/aurelio_pipeline/infra/repositorio.py",
+        "pipeline/src/aurelio_pipeline/dominio/indice_flexoes.py",
+        "pipeline/src/aurelio_pipeline/dominio/renderizacao.py",
+        "pipeline/manifesto-integridade.json"
+      ],
+      "functions": [
+        {
+          "name": "executar",
+          "file": "pipeline/src/aurelio_pipeline/cli.py",
+          "params": [
+            "db: Path",
+            "manifesto: Path",
+            "dist: Path",
+            "cobertura: str",
+            "alvo: str = 'koreader'"
+          ],
+          "returns": "int (exit code)",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "main",
+          "file": "pipeline/src/aurelio_pipeline/cli.py",
+          "params": [],
+          "returns": "None (sys.exit)",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "RepositorioAurelio.validar",
+          "file": "pipeline/src/aurelio_pipeline/infra/repositorio.py",
+          "params": [],
+          "returns": "dict[str, int]",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "RepositorioAurelio.artigos",
+          "file": "pipeline/src/aurelio_pipeline/infra/repositorio.py",
+          "params": [],
+          "returns": "Iterator[tuple[str, list[Verbete]]]",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "RepositorioAurelio.lemas_frequentes",
+          "file": "pipeline/src/aurelio_pipeline/infra/repositorio.py",
+          "params": [],
+          "returns": "frozenset[str]",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "construir_mapa",
+          "file": "pipeline/src/aurelio_pipeline/dominio/indice_flexoes.py",
+          "params": [
+            "fontes: Mapping[str, Iterable[tuple[int,str,str]]]",
+            "headwords: Collection[str]",
+            "progresso: Callable | None"
+          ],
+          "returns": "tuple[dict[str, list[str]], RelatorioCobertura]",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "dividir_formas",
+          "file": "pipeline/src/aurelio_pipeline/dominio/indice_flexoes.py",
+          "params": [
+            "bruta: str | None",
+            "tabela: str",
+            "rowid: int"
+          ],
+          "returns": "list[str]",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "renderizar_artigo",
+          "file": "pipeline/src/aurelio_pipeline/dominio/renderizacao.py",
+          "params": [
+            "lemma: str",
+            "verbetes: Sequence[Verbete]",
+            "advertir: Callable | None"
+          ],
+          "returns": "str (HTML)",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Verbete",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "BlocoClasse",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "Definicao",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "Exemplo",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "Nota",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "Locucao",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "Regencia",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "RelatorioCobertura",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "ResultadoBuild",
+          "fields": [],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Banco aberto só em modo somente-leitura (URI mode=ro)",
+          "location": "pipeline/src/aurelio_pipeline/infra/repositorio.py:122",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Esquema (12 tabelas, colunas requeridas) e contagens conferidos contra o manifesto antes de qualquer leitura",
+          "location": "pipeline/src/aurelio_pipeline/infra/repositorio.py:154",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Homônimos chegam juntos na ordem lemma, homonym (NULL por último), sort_key, id",
+          "location": "pipeline/src/aurelio_pipeline/infra/repositorio.py:100",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "RB-14: forma múltipla dividida por ',' e ' ou '; vazio é FormaAnomalaError",
+          "location": "pipeline/src/aurelio_pipeline/dominio/indice_flexoes.py:15",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Descartes em ordem: órfã, idêntica (comparação exata), duplicada; invariante entrada = gravadas + descartes",
+          "location": "pipeline/src/aurelio_pipeline/dominio/indice_flexoes.py:63",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Artigo abre com <b>lema</b>; homônimos em seções numeradas; abonação em <small><i>, exemplo do editor em <i>",
+          "location": "pipeline/src/aurelio_pipeline/dominio/renderizacao.py:118",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Exit codes: 0 aprovado, 2 ErroPipeline, 3 reprovado; com dois alvos vale o pior",
+          "location": "pipeline/src/aurelio_pipeline/cli.py:253",
+          "confidence": "confirmed"
+        },
+        {
+          "description": ".ifo do KOReader com a data do build; .ifo do Readest com a data do manifesto",
+          "location": "pipeline/src/aurelio_pipeline/cli.py:84",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [
+        "banco-lexical"
+      ],
+      "algorithms": [
+        "classificação de formas com invariante de conservação",
+        "fusão de homônimos por lema",
+        "renderização HTML hierárquica"
+      ],
+      "complexity": "medium"
+    },
+    {
+      "name": "pipeline-koreader",
+      "path": "pipeline/src/aurelio_pipeline",
+      "purpose": "Gerar o StarDict do KOReader via PyGlossary e validá-lo com leitor próprio e paridade de tolerância zero",
+      "primary_files": [
+        "pipeline/src/aurelio_pipeline/infra/escrita_stardict.py",
+        "pipeline/src/aurelio_pipeline/validacao/leitor_stardict.py",
+        "pipeline/src/aurelio_pipeline/validacao/paridade.py"
+      ],
+      "functions": [
+        {
+          "name": "EscritorStarDict.escrever",
+          "file": "pipeline/src/aurelio_pipeline/infra/escrita_stardict.py",
+          "params": [
+            "artigos: Iterable[tuple[str, str, Sequence[str]]]",
+            "data: str"
+          ],
+          "returns": "ResultadoBuild",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "LeitorStarDict.__init__",
+          "file": "pipeline/src/aurelio_pipeline/validacao/leitor_stardict.py",
+          "params": [
+            "diretorio: Path"
+          ],
+          "returns": "LeitorStarDict",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "executar_paridade",
+          "file": "pipeline/src/aurelio_pipeline/validacao/paridade.py",
+          "params": [
+            "leitor",
+            "headwords_esperados",
+            "syn_esperado",
+            "mapa",
+            "textos_definicoes",
+            "amostra=500",
+            "seed_verbetes=20260703",
+            "seed_flexoes=20260704"
+          ],
+          "returns": "ParityReport",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "texto_de_html",
+          "file": "pipeline/src/aurelio_pipeline/validacao/paridade.py",
+          "params": [
+            "conteudo: str"
+          ],
+          "returns": "str",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "ParityReport",
+          "fields": [
+            {
+              "name": "veredito",
+              "type": "str",
+              "required": true
+            },
+            {
+              "name": "gerado_em",
+              "type": "str",
+              "required": true
+            },
+            {
+              "name": "seeds",
+              "type": "dict",
+              "required": true
+            },
+            {
+              "name": "contagens",
+              "type": "dict",
+              "required": true
+            },
+            {
+              "name": "amostras",
+              "type": "dict",
+              "required": true
+            },
+            {
+              "name": "divergencias",
+              "type": "list[dict]",
+              "required": true
+            }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "PyGlossary é o único acoplamento à biblioteca; formas entram como chaves alternativas e viram o .syn",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_stardict.py:68",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Artefato incompleto (falta .dict.dz etc.) é FalhaGeracaoError",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_stardict.py:93",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Troca atômica sem retenção; o artefato é trocado antes do veredito da paridade",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_stardict.py:104",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Leitor independente do PyGlossary (gzip + struct) com validação estrutural",
+          "location": "pipeline/src/aurelio_pipeline/validacao/leitor_stardict.py:18",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Paridade com tolerância zero e relatório integral: contagens, metadados do .ifo, 500 verbetes e 500 formas com sementes fixas",
+          "location": "pipeline/src/aurelio_pipeline/validacao/paridade.py:60",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [
+        "pipeline-nucleo"
+      ],
+      "algorithms": [
+        "validação estrutural de .idx/.syn",
+        "amostragem reproduzível por semente"
+      ],
+      "complexity": "low"
+    },
+    {
+      "name": "pipeline-readest",
+      "path": "pipeline/src/aurelio_pipeline + pipeline/conferencia_readest",
+      "purpose": "Gerar o StarDict do Readest com uma página por palavra e entregá-lo só depois de validação independente e conferência com o código de busca do próprio Readest",
+      "primary_files": [
+        "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py",
+        "pipeline/src/aurelio_pipeline/infra/escrita_readest.py",
+        "pipeline/src/aurelio_pipeline/validacao/paridade_readest.py",
+        "pipeline/src/aurelio_pipeline/infra/conferencia_readest.py",
+        "pipeline/conferencia_readest/conferir.ts",
+        "pipeline/conferencia_readest/fonte-readest.json",
+        "pipeline/conferencia_readest/package.json",
+        "pipeline/conferencia_readest/package-lock.json"
+      ],
+      "functions": [
+        {
+          "name": "agrupar",
+          "file": "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py",
+          "params": [
+            "headwords: Iterable[str]",
+            "mapa: Mapping[str, Sequence[str]]",
+            "frequentes: Collection[str]"
+          ],
+          "returns": "tuple[PlanoPaginas, RelatorioAgrupamento]",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "ordem_readest",
+          "file": "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py",
+          "params": [
+            "texto: str"
+          ],
+          "returns": "bytes (UTF-16-BE das minúsculas)",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "EscritorReadest.escrever",
+          "file": "pipeline/src/aurelio_pipeline/infra/escrita_readest.py",
+          "params": [
+            "plano: PlanoPaginas",
+            "artigos: Mapping[str, str]",
+            "data: str"
+          ],
+          "returns": "ResultadoEscritaReadest",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "promover / reprovar / descartar",
+          "file": "pipeline/src/aurelio_pipeline/infra/escrita_readest.py",
+          "params": [
+            "resultado: ResultadoEscritaReadest",
+            "dist_dir: Path"
+          ],
+          "returns": "Path | None",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "executar_validacao_readest",
+          "file": "pipeline/src/aurelio_pipeline/validacao/paridade_readest.py",
+          "params": [
+            "diretorio",
+            "headwords",
+            "mapa",
+            "frequentes",
+            "textos_definicoes",
+            "data",
+            "amostra=500",
+            "seed=20261015"
+          ],
+          "returns": "ParityReport",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "paginas_esperadas",
+          "file": "pipeline/src/aurelio_pipeline/validacao/paridade_readest.py",
+          "params": [
+            "headwords",
+            "mapa",
+            "frequentes"
+          ],
+          "returns": "tuple[dict[str, tuple[str,...]], set[str]]",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "ConferenciaReadest.preparar",
+          "file": "pipeline/src/aurelio_pipeline/infra/conferencia_readest.py",
+          "params": [],
+          "returns": "Path (cache)",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "ConferenciaReadest.conferir",
+          "file": "pipeline/src/aurelio_pipeline/infra/conferencia_readest.py",
+          "params": [
+            "artefato: Path",
+            "basename: str",
+            "expectativa: Path",
+            "timeout=600"
+          ],
+          "returns": "dict (JSON do roteiro)",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "PaginaReadest",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "PlanoPaginas",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "RelatorioAgrupamento",
+          "fields": [],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "ResultadoEscritaReadest",
+          "fields": [],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Chave do Readest = minúsculas; ordem = cmpAscii (unidades UTF-16 das minúsculas)",
+          "location": "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py:26",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "RN-02/RN-03: cada chave abre exatamente os artigos de todos os lemas a que corresponde, e só eles",
+          "location": "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py:62",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "RN-04: coincidentes primeiro (grafia exata à frente), depois vocabulário frequente, desempate alfabético sem diacríticos",
+          "location": "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py:50",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "RN-06: formas sem letra descartadas; lemas nunca",
+          "location": "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py:83",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Destinos idx-lema, idx-forma-combinada, idx-forma-direta e syn",
+          "location": "pipeline/src/aurelio_pipeline/dominio/agrupamento_readest.py:100",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "D-08: cada sequência distinta gravada uma vez; forma direta aponta para o artigo dentro da página do lema",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_readest.py:116",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "D-10: artigos de uma página separados por <hr>",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_readest.py:35",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "RN-09/D-11: .ifo com data do manifesto e impressão digital; gzip com mtime=0",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_readest.py:153",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "D-15: promoção só com validação e conferência aprovadas; reprovado vai para dist/readest.reprovado/",
+          "location": "pipeline/src/aurelio_pipeline/infra/escrita_readest.py:228",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Validação independente: não importa agrupamento nem escritor; 9 checks com tolerância zero",
+          "location": "pipeline/src/aurelio_pipeline/validacao/paridade_readest.py:118",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Conferência: commit fixado, SHA-256 de originais e reescritos, 3 reescritas com exatamente 1 ocorrência, fflate travado",
+          "location": "pipeline/src/aurelio_pipeline/infra/conferencia_readest.py:148",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "D-14: ambiente da conferência verificado antes do build; falha é AmbienteConferenciaError (exit 2)",
+          "location": "pipeline/src/aurelio_pipeline/cli.py:200",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [
+        "pipeline-nucleo",
+        "pipeline-koreader (LeitorStarDict, ParityReport, texto_de_html)"
+      ],
+      "algorithms": [
+        "agrupamento por chave com ordenação editorial",
+        "roteamento .idx/.syn",
+        "corpo com trechos compartilhados",
+        "busca simulada por bisseção",
+        "conferência com o código real do leitor",
+        "promoção condicionada"
+      ],
+      "complexity": "high"
+    },
+    {
+      "name": "spike-001-flexoes",
+      "path": "spike/001-flexoes",
+      "purpose": "Gerador descartável e reprodutível que validou o .syn em escala real no KOReader (veredito GO presumido)",
+      "primary_files": [
+        "spike/001-flexoes/gerar_spike.py",
+        "spike/001-flexoes/pyproject.toml",
+        "spike/001-flexoes/README.md"
+      ],
+      "functions": [
+        {
+          "name": "gerar",
+          "file": "spike/001-flexoes/gerar_spike.py",
+          "params": [
+            "db_path: Path",
+            "piloto: bool",
+            "cobertura: str"
+          ],
+          "returns": "None",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "construir_mapa",
+          "file": "spike/001-flexoes/gerar_spike.py",
+          "params": [
+            "conn",
+            "headwords",
+            "cobertura"
+          ],
+          "returns": "mapa + relatório",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Corpo trivial exceto para os 20 lemas do roteiro de medição",
+          "location": "spike/001-flexoes/gerar_spike.py:48",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Duplica a lógica do índice de flexões do pipeline (aceito por ser descartável)",
+          "location": "spike/001-flexoes/gerar_spike.py:112",
+          "confidence": "inferred"
+        }
+      ],
+      "dependencies": [
+        "banco-lexical"
+      ],
+      "algorithms": [
+        "classificação de formas (cópia do spike)"
+      ],
+      "complexity": "low"
     }
   ]
 }

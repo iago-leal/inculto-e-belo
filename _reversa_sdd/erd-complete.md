@@ -1,6 +1,6 @@
 # ERD completo — aurelio_normalized.db
 
-> Gerado pelo reversa-architect em 2026-07-03 a partir do DDL real. 🟢 CONFIRMADO.
+> Gerado pelo reversa-architect em 2026-07-03 a partir do DDL real; conferido na re-extração de 2026-10-15 (banco inalterado, mesmas contagens). 🟢 CONFIRMADO.
 > Linhas tracejadas conceituais: ligações **textuais sem FK** (integridade por convenção).
 
 ```mermaid
@@ -145,3 +145,29 @@ erDiagram
 ## FTS5 (fora do ERD relacional)
 
 `fts_entries` (lemma/slug/classe) e `fts_definitions` (content_text) são tabelas virtuais **external content** apontando para `entries` e `definitions` via `content_rowid` — dependem do mesmo arquivo e quebram em cópias parciais.
+
+## Modelo lógico dos artefatos derivados (re-extração de 2026-10-15)
+
+🟢 Não são tabelas: é a estrutura dos arquivos StarDict gerados pelo pipeline, descrita como entidades para mostrar as cardinalidades.
+
+```mermaid
+erDiagram
+    LEMA ||--|| ARTIGO_HTML : "renderizar_artigo (homônimos fundidos)"
+    LEMA ||--o{ FORMA : "mapa do índice de flexões"
+    KOREADER_IDX ||--|| ARTIGO_HTML : "1 headword = 1 artigo"
+    KOREADER_SYN }o--|| KOREADER_IDX : "forma → índice do headword"
+    READEST_CHAVE ||--|| PAGINA : "chave.lower() abre 1 página"
+    PAGINA ||--|{ ARTIGO_HTML : "1 a 5 artigos separados por <hr>"
+    PAGINA }o--|| SEQUENCIA_DISTINTA : "páginas combinadas iguais compartilham o trecho"
+    READEST_IDX ||--|| PAGINA : "lema, forma combinada ou forma direta"
+    READEST_SYN }o--|| READEST_IDX : "forma de 1 lema → entrada do lema"
+```
+
+| Entidade lógica | Volume no último build |
+|-----------------|------------------------|
+| LEMA / ARTIGO_HTML | 137.784 |
+| FORMA (pares gravados) | 774.003 |
+| KOREADER_IDX / KOREADER_SYN | 137.784 / 774.003 |
+| READEST_CHAVE / PAGINA | 887.546 |
+| READEST_IDX / READEST_SYN | 160.302 / 727.244 |
+| SEQUENCIA_DISTINTA (páginas combinadas) | 16.910 para 22.913 páginas |

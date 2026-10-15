@@ -19,40 +19,62 @@
   "pending": [],
   "checkpoints": {
     "scout": {
-      "completed_at": "2026-07-03T21:50:00Z",
+      "completed_at": "2026-10-15T14:16:00Z",
       "files": [
         "_reversa_sdd/inventory.md",
         "_reversa_sdd/dependencies.md",
         ".reversa/context/surface.json"
+      ],
+      "modules": [
+        "banco-lexical",
+        "governanca-operacional",
+        "pipeline-nucleo",
+        "pipeline-koreader",
+        "pipeline-readest",
+        "spike-001-flexoes"
       ]
     },
     "archaeologist": {
-      "completed_at": "2026-07-03T22:05:00Z",
-      "modules_analyzed": ["banco-lexical", "governanca-operacional"],
+      "completed_at": "2026-10-15T14:40:00Z",
+      "modules_analyzed": [
+        "banco-lexical",
+        "governanca-operacional",
+        "pipeline-nucleo",
+        "pipeline-koreader",
+        "pipeline-readest",
+        "spike-001-flexoes"
+      ],
       "modules_pending": [],
       "files": [
         "_reversa_sdd/code-analysis.md",
         "_reversa_sdd/data-dictionary.md",
         "_reversa_sdd/flowcharts/banco-lexical.md",
         "_reversa_sdd/flowcharts/governanca-operacional.md",
+        "_reversa_sdd/flowcharts/pipeline-nucleo.md",
+        "_reversa_sdd/flowcharts/pipeline-koreader.md",
+        "_reversa_sdd/flowcharts/pipeline-readest.md",
+        "_reversa_sdd/flowcharts/spike-001-flexoes.md",
         ".reversa/context/modules.json"
       ]
     },
     "detective": {
-      "completed_at": "2026-07-03T22:20:00Z",
+      "completed_at": "2026-10-15T15:00:00Z",
       "files": [
         "_reversa_sdd/domain.md",
         "_reversa_sdd/state-machines.md",
         "_reversa_sdd/permissions.md",
-        "_reversa_sdd/adrs/0001-sqlite-unico-normalizado.md",
-        "_reversa_sdd/adrs/0002-db-fora-do-git-backup-rclone.md",
-        "_reversa_sdd/adrs/0003-harness-core-no-upstream.md",
-        "_reversa_sdd/adrs/0004-specs-antes-de-codigo.md",
-        "_reversa_sdd/adrs/0005-spike-como-gate.md"
-      ]
+        "_reversa_sdd/adrs/0005-spike-como-gate.md",
+        "_reversa_sdd/adrs/0006-pipeline-em-camadas-com-gate-de-paridade.md",
+        "_reversa_sdd/adrs/0007-alvo-readest-pagina-unica-e-escritor-proprio.md",
+        "_reversa_sdd/adrs/0008-gate-de-duas-etapas-com-codigo-real-do-readest.md",
+        "_reversa_sdd/adrs/0009-nuvem-privada-do-readest-nao-e-publicacao.md"
+      ],
+      "rules": 24,
+      "adrs_new": 4,
+      "gaps_red": 0
     },
     "architect": {
-      "completed_at": "2026-07-03T22:35:00Z",
+      "completed_at": "2026-10-15T15:20:00Z",
       "files": [
         "_reversa_sdd/architecture.md",
         "_reversa_sdd/c4-context.md",
@@ -60,29 +82,83 @@
         "_reversa_sdd/c4-components.md",
         "_reversa_sdd/erd-complete.md",
         "_reversa_sdd/traceability/spec-impact-matrix.md"
-      ]
+      ],
+      "components": 10,
+      "integrations": 8,
+      "tech_debts": 10
     },
     "writer": {
-      "completed_at": "2026-07-03T22:50:00Z",
-      "units": ["banco-lexical", "governanca-operacional"],
+      "completed_at": "2026-10-15T14:15:00Z",
+      "units": [
+        "banco-lexical",
+        "governanca-operacional",
+        "pipeline-nucleo",
+        "pipeline-koreader",
+        "pipeline-readest",
+        "spike-001-flexoes"
+      ],
       "files": [
-        "_reversa_sdd/banco-lexical/requirements.md",
-        "_reversa_sdd/banco-lexical/design.md",
-        "_reversa_sdd/banco-lexical/tasks.md",
-        "_reversa_sdd/banco-lexical/questions.md",
-        "_reversa_sdd/governanca-operacional/requirements.md",
-        "_reversa_sdd/governanca-operacional/design.md",
-        "_reversa_sdd/governanca-operacional/tasks.md",
+        "_reversa_sdd/governanca-operacional/decisions.md",
+        "_reversa_sdd/pipeline-nucleo/requirements.md",
+        "_reversa_sdd/pipeline-nucleo/design.md",
+        "_reversa_sdd/pipeline-nucleo/tasks.md",
+        "_reversa_sdd/pipeline-nucleo/contracts.md",
+        "_reversa_sdd/pipeline-koreader/requirements.md",
+        "_reversa_sdd/pipeline-koreader/design.md",
+        "_reversa_sdd/pipeline-koreader/tasks.md",
+        "_reversa_sdd/pipeline-readest/requirements.md",
+        "_reversa_sdd/pipeline-readest/design.md",
+        "_reversa_sdd/pipeline-readest/tasks.md",
+        "_reversa_sdd/pipeline-readest/contracts.md",
+        "_reversa_sdd/spike-001-flexoes/requirements.md",
+        "_reversa_sdd/spike-001-flexoes/design.md",
+        "_reversa_sdd/spike-001-flexoes/tasks.md",
+        "_reversa_sdd/user-stories/consulta-no-readest.md",
+        "_reversa_sdd/user-stories/regenerar-dicionarios.md",
+        "_reversa_sdd/traceability/code-spec-matrix-pipeline.md"
+      ],
+      "preserved": [
+        "_reversa_sdd/banco-lexical/*",
+        "_reversa_sdd/governanca-operacional/{requirements,design,tasks}.md",
         "_reversa_sdd/user-stories/consulta-de-palavra.md",
         "_reversa_sdd/user-stories/retomada-fria.md",
         "_reversa_sdd/traceability/code-spec-matrix.md"
-      ]
+      ],
+      "openapi": "n/a (sem API HTTP; contratos da CLI e da conferência em contracts.md)"
     },
     "reviewer": {
-      "completed_at": "2026-07-03T23:05:00Z",
-      "reclassifications": 4,
+      "completed_at": "2026-10-15T14:32:00Z",
+      "specs_reviewed": 6,
       "cross_review": "indisponivel (sem Codex)",
-      "regression_check": "pulado (nenhum regression-watch.md em _reversa_forward/)",
+      "reclassifications": 6,
+      "questions": {
+        "generated": 0,
+        "optional_pending": 1,
+        "answered": 0
+      },
+      "confidence": {
+        "green": 489,
+        "yellow": 66,
+        "red": 0,
+        "overall_pct": 94
+      },
+      "regression_check": {
+        "features": [
+          "001-spike-de-flexoes",
+          "002-build-completo-de-producao",
+          "003-dicionario-readest"
+        ],
+        "items": 18,
+        "green": 17,
+        "yellow": 1,
+        "red": 0,
+        "yellow_items": [
+          "001-spike-de-flexoes/W005"
+        ],
+        "addenda_superseded": [
+          "_reversa_sdd/addenda/003-dicionario-readest.md"
+        ]
+      },
       "files": [
         "_reversa_sdd/confidence-report.md",
         "_reversa_sdd/questions.md",
@@ -91,60 +167,88 @@
     }
   },
   "redator_progress": {
-    "plan_total": 10,
-    "done": 10,
-    "last_file": "_reversa_sdd/traceability/code-spec-matrix.md"
+    "plan_total": 18,
+    "done": 18,
+    "last_file": "_reversa_sdd/traceability/code-spec-matrix-pipeline.md"
   },
-  "engines": ["claude-code", "antigravity"],
+  "engines": [
+    "claude-code",
+    "antigravity"
+  ],
   "agents": [
     "reversa",
-    "reversa-autonomous",
-    "reversa-scout",
-    "reversa-archaeologist",
-    "reversa-detective",
-    "reversa-architect",
-    "reversa-writer",
-    "reversa-reviewer",
-    "reversa-visor",
-    "reversa-data-master",
-    "reversa-design-system",
+    "reversa-add",
     "reversa-agents-help",
-    "reversa-reconstructor",
-    "reversa-migrate",
-    "reversa-paradigm-advisor",
-    "reversa-curator",
-    "reversa-strategist",
-    "reversa-designer",
-    "reversa-screen-translator",
-    "reversa-inspector",
-    "reversa-forward",
-    "reversa-requirements",
-    "reversa-clarify",
-    "reversa-plan",
-    "reversa-to-do",
+    "reversa-arbiter",
+    "reversa-archaeologist",
+    "reversa-architect",
+    "reversa-arquitetura-3d",
     "reversa-audit",
-    "reversa-quality",
+    "reversa-autonomous",
+    "reversa-brainstorm",
+    "reversa-challenger",
+    "reversa-clarify",
+    "reversa-code-express",
     "reversa-coding",
-    "reversa-principles",
-    "reversa-resume",
-    "reversa-new",
-    "reversa-ideator",
-    "reversa-researcher",
+    "reversa-curator",
+    "reversa-data-master",
+    "reversa-debugger",
+    "reversa-debugger-debate",
+    "reversa-debugger-fix",
+    "reversa-debugger-graph",
+    "reversa-decouple",
+    "reversa-depth-inspection",
+    "reversa-design-system",
+    "reversa-designer",
+    "reversa-detective",
+    "reversa-docs",
+    "reversa-docs-analyst",
+    "reversa-docs-mapper",
+    "reversa-docs-publisher",
+    "reversa-docs-storyteller",
     "reversa-drafter",
-    "reversa-spec-sdd",
+    "reversa-especialista-d3",
+    "reversa-explorer",
+    "reversa-extract-soul",
+    "reversa-forward",
+    "reversa-forward-autonomous",
+    "reversa-framer",
+    "reversa-highcharts-visualizer",
+    "reversa-ideator",
+    "reversa-image-prompt-json",
+    "reversa-inspector",
+    "reversa-migrate",
+    "reversa-modularize",
+    "reversa-n8n",
+    "reversa-new",
+    "reversa-optimize",
+    "reversa-paradigm-advisor",
+    "reversa-plan",
+    "reversa-pre-spec",
+    "reversa-pricing-estimate",
     "reversa-pricing-profile",
     "reversa-pricing-size",
-    "reversa-pricing-estimate",
-    "reversa-docs",
-    "reversa-docs-mapper",
-    "reversa-docs-analyst",
-    "reversa-docs-storyteller",
-    "reversa-docs-publisher",
-    "reversa-arquitetura-3d",
+    "reversa-principles",
+    "reversa-prune",
+    "reversa-quality",
+    "reversa-reconstructor",
+    "reversa-refactor",
+    "reversa-requirements",
+    "reversa-researcher",
+    "reversa-restructure",
+    "reversa-resume",
+    "reversa-reviewer",
+    "reversa-scout",
+    "reversa-screen-translator",
     "reversa-selo-generativo",
-    "reversa-highcharts-visualizer",
-    "reversa-especialista-d3",
-    "reversa-image-prompt-json"
+    "reversa-simplify",
+    "reversa-spec-sdd",
+    "reversa-standardize",
+    "reversa-strategist",
+    "reversa-sync",
+    "reversa-to-do",
+    "reversa-visor",
+    "reversa-writer"
   ],
   "created_files": [
     ".claude/skills/reversa",
@@ -263,13 +367,163 @@
     ".reversa/config.user.toml",
     ".reversa/plan.md",
     ".reversa/version",
-    ".reversa/_config/manifest.yaml"
+    ".reversa/_config/manifest.yaml",
+    ".claude/skills/reversa-add",
+    ".agents/skills/reversa-add",
+    ".claude/skills/reversa-arbiter",
+    ".agents/skills/reversa-arbiter",
+    ".claude/skills/reversa-brainstorm",
+    ".agents/skills/reversa-brainstorm",
+    ".claude/skills/reversa-challenger",
+    ".agents/skills/reversa-challenger",
+    ".claude/skills/reversa-code-express",
+    ".agents/skills/reversa-code-express",
+    ".claude/skills/reversa-debugger",
+    ".agents/skills/reversa-debugger",
+    ".claude/skills/reversa-debugger-debate",
+    ".agents/skills/reversa-debugger-debate",
+    ".claude/skills/reversa-debugger-fix",
+    ".agents/skills/reversa-debugger-fix",
+    ".claude/skills/reversa-debugger-graph",
+    ".agents/skills/reversa-debugger-graph",
+    ".claude/skills/reversa-decouple",
+    ".agents/skills/reversa-decouple",
+    ".claude/skills/reversa-depth-inspection",
+    ".agents/skills/reversa-depth-inspection",
+    ".claude/skills/reversa-explorer",
+    ".agents/skills/reversa-explorer",
+    ".claude/skills/reversa-extract-soul",
+    ".agents/skills/reversa-extract-soul",
+    ".claude/skills/reversa-forward-autonomous",
+    ".agents/skills/reversa-forward-autonomous",
+    ".claude/skills/reversa-framer",
+    ".agents/skills/reversa-framer",
+    ".claude/skills/reversa-modularize",
+    ".agents/skills/reversa-modularize",
+    ".claude/skills/reversa-n8n",
+    ".agents/skills/reversa-n8n",
+    ".claude/skills/reversa-optimize",
+    ".agents/skills/reversa-optimize",
+    ".claude/skills/reversa-pre-spec",
+    ".agents/skills/reversa-pre-spec",
+    ".claude/skills/reversa-prune",
+    ".agents/skills/reversa-prune",
+    ".claude/skills/reversa-refactor",
+    ".agents/skills/reversa-refactor",
+    ".claude/skills/reversa-restructure",
+    ".agents/skills/reversa-restructure",
+    ".claude/skills/reversa-simplify",
+    ".agents/skills/reversa-simplify",
+    ".claude/skills/reversa-standardize",
+    ".agents/skills/reversa-standardize",
+    ".claude/skills/reversa-sync",
+    ".agents/skills/reversa-sync",
+    ".reversa/reversa-config.json",
+    ".reversa/hooks/README.md",
+    ".reversa/hooks/check-legacy-policy.mjs"
   ],
   "newproject_progress": {
     "stage": "done",
     "started_at": "2026-07-03T19:30:34Z",
     "last_checkpoint_at": "2026-07-03T21:10:00Z",
-    "completed_stages": ["ideator", "researcher", "drafter", "spec-sdd"],
+    "completed_stages": [
+      "ideator",
+      "researcher",
+      "drafter",
+      "spec-sdd"
+    ],
     "brief": "Utilizaremos esse banco de dados de dicionário para desenvolver algumas aplicações. A primeira será fazer com que ele seja acessível ao KOReader. Prioridades: longevidade, saúde, manutenibilidade"
+  },
+  "extraction_history": [
+    {
+      "started_at": "2026-07-03T21:40:00Z",
+      "finished_at": "2026-07-03T23:05:00Z",
+      "plan": ".reversa/plan-extracao-2026-07-03.md",
+      "checkpoints": {
+        "scout": {
+          "completed_at": "2026-07-03T21:50:00Z",
+          "files": [
+            "_reversa_sdd/inventory.md",
+            "_reversa_sdd/dependencies.md",
+            ".reversa/context/surface.json"
+          ]
+        },
+        "archaeologist": {
+          "completed_at": "2026-07-03T22:05:00Z",
+          "modules_analyzed": [
+            "banco-lexical",
+            "governanca-operacional"
+          ],
+          "modules_pending": [],
+          "files": [
+            "_reversa_sdd/code-analysis.md",
+            "_reversa_sdd/data-dictionary.md",
+            "_reversa_sdd/flowcharts/banco-lexical.md",
+            "_reversa_sdd/flowcharts/governanca-operacional.md",
+            ".reversa/context/modules.json"
+          ]
+        },
+        "detective": {
+          "completed_at": "2026-07-03T22:20:00Z",
+          "files": [
+            "_reversa_sdd/domain.md",
+            "_reversa_sdd/state-machines.md",
+            "_reversa_sdd/permissions.md",
+            "_reversa_sdd/adrs/0001-sqlite-unico-normalizado.md",
+            "_reversa_sdd/adrs/0002-db-fora-do-git-backup-rclone.md",
+            "_reversa_sdd/adrs/0003-harness-core-no-upstream.md",
+            "_reversa_sdd/adrs/0004-specs-antes-de-codigo.md",
+            "_reversa_sdd/adrs/0005-spike-como-gate.md"
+          ]
+        },
+        "architect": {
+          "completed_at": "2026-07-03T22:35:00Z",
+          "files": [
+            "_reversa_sdd/architecture.md",
+            "_reversa_sdd/c4-context.md",
+            "_reversa_sdd/c4-containers.md",
+            "_reversa_sdd/c4-components.md",
+            "_reversa_sdd/erd-complete.md",
+            "_reversa_sdd/traceability/spec-impact-matrix.md"
+          ]
+        },
+        "writer": {
+          "completed_at": "2026-07-03T22:50:00Z",
+          "units": [
+            "banco-lexical",
+            "governanca-operacional"
+          ],
+          "files": [
+            "_reversa_sdd/banco-lexical/requirements.md",
+            "_reversa_sdd/banco-lexical/design.md",
+            "_reversa_sdd/banco-lexical/tasks.md",
+            "_reversa_sdd/banco-lexical/questions.md",
+            "_reversa_sdd/governanca-operacional/requirements.md",
+            "_reversa_sdd/governanca-operacional/design.md",
+            "_reversa_sdd/governanca-operacional/tasks.md",
+            "_reversa_sdd/user-stories/consulta-de-palavra.md",
+            "_reversa_sdd/user-stories/retomada-fria.md",
+            "_reversa_sdd/traceability/code-spec-matrix.md"
+          ]
+        },
+        "reviewer": {
+          "completed_at": "2026-07-03T23:05:00Z",
+          "reclassifications": 4,
+          "cross_review": "indisponivel (sem Codex)",
+          "regression_check": "pulado (nenhum regression-watch.md em _reversa_forward/)",
+          "files": [
+            "_reversa_sdd/confidence-report.md",
+            "_reversa_sdd/questions.md",
+            "_reversa_sdd/gaps.md"
+          ]
+        }
+      }
+    }
+  ],
+  "reextraction": {
+    "started_at": "2026-10-15T14:05:00Z",
+    "mode": "autonomous",
+    "reason": "após as features 001, 002 e 003 do ciclo forward",
+    "finished_at": "2026-10-15T14:32:00Z"
   }
 }

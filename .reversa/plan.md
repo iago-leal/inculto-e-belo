@@ -1,8 +1,8 @@
-# Plano de Exploração — inculto-e-belo
+# Plano de Exploração — inculto-e-belo (re-extração)
 
-> Criado pelo Reversa em 2026-07-03
+> Criado pelo Reversa em 2026-10-15, no modo autônomo, para a re-extração após as features 001, 002 e 003 do ciclo forward.
+> O plano da extração anterior está em `.reversa/plan-extracao-2026-07-03.md`.
 > Marque cada tarefa com ✅ quando concluída.
-> Você pode editar este plano antes de iniciar: adicione, remova ou reordene tarefas conforme necessário.
 
 ---
 
@@ -14,14 +14,16 @@
 
 ## Decisão de organização das specs 🗂️
 
-> Entre o Scout e o Arqueólogo, o Reversa pergunta como você quer organizar as specs (por módulo, caso de uso, endpoint, híbrida, por features ou customizada). A escolha fica persistida em `.reversa/config.toml` na seção `[specs]` e não será reperguntada em execuções futuras. Para reapresentar o menu, remova manualmente a seção.
+> Já decidida em `.reversa/config.toml`, seção `[specs]` (por módulo, `feature-folder`), e mantida nesta re-extração.
 
 ## Fase 2: Escavação 🏗️
 
-> O Reversa preenche esta seção com os módulos reais após o Scout concluir o reconhecimento.
-
-- [x] **Arqueólogo** — Análise do módulo `banco-lexical` (schema e conteúdo do SQLite) ✅
-- [x] **Arqueólogo** — Análise do módulo `governanca-operacional` (shim harness, backup, gitignore) ✅
+- [x] **Arqueólogo** — Análise do módulo `banco-lexical` (schema e conteúdo do SQLite; conferência de inalteração) ✅
+- [x] **Arqueólogo** — Análise do módulo `governanca-operacional` (Harness com `[regen]`, backup, `.gitignore`, READMEs como runbook) ✅
+- [x] **Arqueólogo** — Análise do módulo `pipeline-nucleo` (CLI, erros, modelos, ingestão com manifesto, índice de flexões, renderização) ✅
+- [x] **Arqueólogo** — Análise do módulo `pipeline-koreader` (escrita via PyGlossary, leitor próprio, paridade) ✅
+- [x] **Arqueólogo** — Análise do módulo `pipeline-readest` (agrupamento, escritor próprio, validação, conferência em Node) ✅
+- [x] **Arqueólogo** — Análise do módulo `spike-001-flexoes` (gerador descartável da feature 001) ✅
 
 ## Fase 3: Interpretação 🧠
 
@@ -34,33 +36,26 @@
 
 ## Fase 4: Geração 📝
 
-- [x] **Redator** — Specs SDD por componente ✅ (units `banco-lexical/`, `governanca-operacional/`)
-- [x] **Redator** — OpenAPI (se aplicável) ✅ (n/a — sem API)
-- [x] **Redator** — User Stories (se aplicável) ✅ (consulta-de-palavra, retomada-fria)
+- [x] **Redator** — Specs SDD por componente ✅
+- [x] **Redator** — OpenAPI (se aplicável) ✅ n/a: sem API HTTP; contratos da CLI e da conferência em `contracts.md`
+- [x] **Redator** — User Stories (se aplicável) ✅
 - [x] **Redator** — Code/Spec Matrix ✅
 
 ## Fase 5: Revisão ✅
 
-- [x] **Revisor** — Revisão cruzada de specs ✅ (Codex indisponível; revisão própria com amostragem no banco)
-- [x] **Revisor** — Resolução de lacunas com o usuário ✅ (4 lacunas resolvidas por amostragem; 1 pergunta opcional em questions.md)
-- [x] **Revisor** — Relatório de confiança final ✅ (~92%)
+- [x] **Revisor** — Revisão cruzada de specs ✅ (sem Codex; revisão própria)
+- [x] **Revisor** — Resolução de lacunas ✅
+- [x] **Revisor** — Relatório de confiança final ✅
+
+## Verificação de regressão semântica 🔁
+
+- [x] **Reversa** — Watch items de `001-spike-de-flexoes`, `002-build-completo-de-producao` e `003-dicionario-readest`; adendos vigentes marcados como superados ✅ (17 🟢, 1 🟡, 0 🔴)
 
 ---
 
 ## Agentes Independentes
 
-> Execute estes agentes quando os recursos estiverem disponíveis — podem rodar em qualquer fase.
-
-- [x] **Visor** — Análise de interface via screenshots ✅ (n/a — sem UI/screenshots)
-- [x] **Data Master** — Análise completa do banco de dados ✅ (absorvida: DDL completo, contagens, enums e ERD em `data-dictionary.md` + `erd-complete.md`)
-- [x] **Design System** — Extração de tokens de design ✅ (n/a — sem CSS/temas)
-- [x] **Tracer** — Análise dinâmica (requer sistema acessível) ✅ (n/a — não instalado; sistema é arquivo estático)
-
----
-
-## Próximo passo
-
-Após o Time de Descoberta concluir e o `_reversa_sdd/` estar populado, você pode disparar um dos fluxos seguintes:
-
-- `/reversa-migrate`: orquestrador do **Time de Migração** (Paradigm Advisor → Curator → Strategist → Designer → Screen Translator → Inspector). Gera as specs do sistema novo. Saída em `_reversa_sdd/migration/` e `_reversa_sdd/screens/`.
-- `/reversa-reconstructor`: gera plano bottom-up para reimplementar o software a partir das specs do legado (uma tarefa por sessão).
+- [x] **Visor** — n/a, sem UI ✅
+- [x] **Data Master** — absorvido pelo Arqueólogo (`data-dictionary.md`, `erd-complete.md`) ✅
+- [x] **Design System** — n/a ✅
+- [x] **Tracer** — n/a, não instalado ✅

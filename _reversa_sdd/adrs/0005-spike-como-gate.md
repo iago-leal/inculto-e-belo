@@ -1,6 +1,6 @@
 # ADR-0005 — Spike em dispositivo real como gate do investimento no build completo
 
-> Retroativo, gerado pelo reversa-detective em 2026-07-03. Status: **aceita** (em execução — feature `001-spike-de-flexoes`). Confidência: 🟢 (commit 32fee47; requirements.md da feature; OQ-01 da spec `indice-de-flexoes`)
+> Retroativo, gerado pelo reversa-detective em 2026-07-03; status revisto na re-extração de 2026-10-15. Status: **aceita e executada**. Veredito **GO presumido** por decisão do usuário, sem a medição pré-registrada no Boox (commit 7703eb7; `_reversa_forward/001-spike-de-flexoes/spike-report.md`). Confidência: 🟢 (commits 32fee47 e 7703eb7; requirements.md da feature; OQ-01 da spec `indice-de-flexoes`)
 
 ## Contexto
 
@@ -21,3 +21,7 @@ Antes do build completo, gerar artefato de spike com índices em escala real (to
 - Veredito GO destrava o build com as OQs de maior risco fechadas.
 - Veredito NO-GO aciona fallbacks em ordem fixa antes de qualquer reabertura da decisão de formato.
 - O código do spike é descartável, mas versionado e reprodutível (RN-04) — o veredito precisa sobreviver à regeneração do banco.
+
+## Desfecho (re-extração de 2026-10-15)
+
+O critério de RN-05 não foi aplicado como pré-registrado. O teste preparatório no KOReader do macOS resolveu 20 de 20 formas, e o usuário dispensou a medição no Boox, presumindo o GO. O build completo seguiu (ADR-0006) e herdou a condição de monitoramento da latência nas primeiras leituras, com o fallback `--cobertura flexions-somente` disponível na CLI de produção.

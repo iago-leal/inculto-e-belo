@@ -26,3 +26,4 @@ Então não há resultado — comportamento aceito e documentado (RB-05)
 
 - Resolução forma→lema: 🟢 suportada pelo banco (`flexions`, `conjugations` indexadas).
 - Entrega no dispositivo: 🟡 aguardando o pipeline StarDict; premissa de latência sob validação na feature `001-spike-de-flexoes` (RN-05).
+- **[Revisão 2026-10-15]** o artefato existe desde a feature 002 (`pipeline-koreader/`), com paridade aprovada; a latência de menos de 1 s continua 🟡, porque o spike terminou em GO presumido, sem medição no Boox (ADR-0005). A variante no Readest está em `consulta-no-readest.md`.

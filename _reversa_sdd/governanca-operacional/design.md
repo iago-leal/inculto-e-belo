@@ -33,7 +33,7 @@
 | --------------------------------------------------------------------- | ------------------------------- | --------- |
 | Shim mínimo com core único no upstream                                | `harness` (15 linhas); ADR-0003 | 🟢        |
 | Backup fora do git por tamanho e direitos autorais                    | `.gitignore`; ADR-0002          | 🟢        |
-| Seção `[regen]` reservada e comentada (sem artefatos derivados ainda) | `harness.toml`                  | 🟢        |
+| Seção `[regen]` reservada e comentada (sem artefatos derivados ainda). **[Revisão 2026-10-15]** superada: a seção está ativa desde a feature 002 e regenera só o KOReader, ver `decisions.md` G-01 | `harness.toml:16` | 🟡 superada |
 
 ## Estado Interno
 

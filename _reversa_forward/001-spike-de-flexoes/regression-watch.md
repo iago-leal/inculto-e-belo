@@ -21,6 +21,17 @@
 
 ## Histórico de re-extrações
 
+### Re-extração 2026-10-15 11:30
+
+| ID | Veredito | Observação |
+|----|----------|------------|
+| W001 | 🟢 verde | RB-05 preservada em `_reversa_sdd/domain.md` §3; §4 mantém 22 lemas órfãos (11 infinitivos e 11 cabeças) e 748 formas |
+| W002 | 🟢 verde | RB-14 presente em `domain.md`, agora promovida de achado (§6) a regra (§3), com ponteiro em §6; split implementado em `dominio/indice_flexoes.py` e testado |
+| W003 | 🟢 verde | Baseline intacta em `domain.md` §4: 143.376 / 137.784 / 175.259 / 869.119; manifesto sem commit novo desde d6efb26 |
+| W004 | 🟢 verde | RB-10 em `domain.md` §3; as duas conexões do código (`infra/repositorio.py:122`, `spike/001-flexoes/gerar_spike.py:83`) usam `mode=ro`, sem nenhum comando de escrita |
+| W005 | 🟡 amarelo | Essência preservada (uso pessoal, `dist/` fora do git, nada publicado), mas RB-11 ganhou a ressalva da nuvem privada do Readest (ADR-0009, decisão do usuário em 2026-10-15), que vai além de «dispositivos do usuário» no sinal desta W; mudança deliberada, aguarda julgamento |
+| W006 | 🟢 verde | Mapa dos tempos 1–13 inalterado em `_reversa_sdd/data-dictionary.md` §conjugations (1=pres. ind. … 13=particípio) |
+
 <!-- preenchido pelo /reversa (step-04) nas próximas extrações -->
 
 ## Arquivadas

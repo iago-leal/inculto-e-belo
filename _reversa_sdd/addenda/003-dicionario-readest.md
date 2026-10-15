@@ -8,6 +8,7 @@
 ## Vigência
 
 Vigente desde 2026-10-15.
+Superado pela re-extração de 2026-10-15.
 
 ## Resumo da entrega
 

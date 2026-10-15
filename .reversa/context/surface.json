@@ -1,44 +1,162 @@
 {
-  "generated_at": "2026-07-03T21:45:00Z",
+  "generated_at": "2026-10-15T14:15:00Z",
   "project_root": "/Users/iagoleal/dev/inculto-e-belo",
   "languages": [
-    { "name": "SQL/SQLite", "extensions": [".db"], "file_count": 1 },
-    { "name": "Markdown", "extensions": [".md"], "file_count": 15 },
-    { "name": "Bash", "extensions": [""], "file_count": 1 }
-  ],
-  "primary_language": "SQL/SQLite",
-  "frameworks": [
     {
-      "name": "SQLite FTS5",
-      "version": "embutida no arquivo .db",
-      "source": "tabelas fts_entries/fts_definitions"
+      "name": "Python",
+      "extensions": [
+        ".py"
+      ],
+      "file_count": 27
+    },
+    {
+      "name": "TypeScript",
+      "extensions": [
+        ".ts"
+      ],
+      "file_count": 1
+    },
+    {
+      "name": "Markdown",
+      "extensions": [
+        ".md"
+      ],
+      "file_count": 8
+    },
+    {
+      "name": "SQL/SQLite",
+      "extensions": [
+        ".db"
+      ],
+      "file_count": 1
+    },
+    {
+      "name": "Bash",
+      "extensions": [
+        ""
+      ],
+      "file_count": 1
     }
   ],
-  "package_manager": "nenhum",
-  "entry_points": [
-    { "path": "aurelio_normalized.db", "type": "data_asset" },
-    { "path": "harness", "type": "cli_shim_governanca" }
+  "primary_language": "Python",
+  "frameworks": [
+    {
+      "name": "PyGlossary",
+      "version": "5.4.1",
+      "source": "pipeline/pyproject.toml"
+    },
+    {
+      "name": "python-idzip",
+      "version": "0.3.9",
+      "source": "pipeline/pyproject.toml"
+    },
+    {
+      "name": "fflate",
+      "version": "0.8.3",
+      "source": "pipeline/conferencia_readest/package.json"
+    },
+    {
+      "name": "Readest (código de busca, obtido em execução)",
+      "version": "v0.12.16 @ 3cc39ad7",
+      "source": "pipeline/conferencia_readest/fonte-readest.json"
+    },
+    {
+      "name": "SQLite FTS5",
+      "version": "embutida no .db",
+      "source": "aurelio_normalized.db"
+    }
   ],
-  "config_files": ["harness.toml", ".gitignore"],
+  "package_manager": "uv (Python) + npm (conferência)",
+  "entry_points": [
+    {
+      "path": "pipeline/src/aurelio_pipeline/cli.py",
+      "type": "cli_entry (aurelio-pipeline)"
+    },
+    {
+      "path": "pipeline/conferencia_readest/conferir.ts",
+      "type": "subprocess_entry (Node)"
+    },
+    {
+      "path": "spike/001-flexoes/gerar_spike.py",
+      "type": "cli_entry (spike descartável)"
+    },
+    {
+      "path": "harness",
+      "type": "cli_shim_governanca ([regen] → aurelio-pipeline)"
+    },
+    {
+      "path": "aurelio_normalized.db",
+      "type": "data_asset"
+    }
+  ],
+  "config_files": [
+    "harness.toml",
+    ".gitignore",
+    "pipeline/pyproject.toml",
+    "pipeline/manifesto-integridade.json",
+    "pipeline/conferencia_readest/fonte-readest.json",
+    "pipeline/conferencia_readest/package.json",
+    "spike/001-flexoes/pyproject.toml"
+  ],
   "ci_cd": [],
   "database_hints": [
-    { "path": "aurelio_normalized.db", "type": "sqlite_database" }
+    {
+      "path": "aurelio_normalized.db",
+      "type": "sqlite_database"
+    },
+    {
+      "path": "pipeline/manifesto-integridade.json",
+      "type": "row_count_manifest"
+    },
+    {
+      "path": "pipeline/src/aurelio_pipeline/infra/repositorio.py",
+      "type": "read_only_repository"
+    }
   ],
-  "test_framework": null,
-  "test_file_count": 0,
-  "modules": ["banco-lexical", "governanca-operacional"],
-  "total_files": 19,
+  "test_framework": "pytest 8.4.1",
+  "test_file_count": 8,
+  "test_count": 145,
+  "modules": [
+    "banco-lexical",
+    "governanca-operacional",
+    "pipeline-nucleo",
+    "pipeline-koreader",
+    "pipeline-readest",
+    "spike-001-flexoes"
+  ],
+  "total_files": 47,
   "organization_suggestion": {
     "granularity": "module",
-    "rationale": "Sem pastas de código nem rotas; o sistema é um banco SQLite cujos domínios de dados (verbetes, flexões, conjugações, busca) formam um módulo coeso, mais a camada operacional.",
+    "rationale": "O código vive em pastas top-level de domínio (pipeline/, spike/) e o pipeline separa domínio, infraestrutura e validação por alvo; o ativo e a governança seguem como módulos próprios.",
     "signals": [
-      { "type": "single_data_asset", "evidence": ["aurelio_normalized.db"] }
+      {
+        "type": "top_level_domain_folders",
+        "evidence": [
+          "pipeline/",
+          "spike/001-flexoes/"
+        ]
+      },
+      {
+        "type": "layered_package",
+        "evidence": [
+          "pipeline/src/aurelio_pipeline/dominio/",
+          "pipeline/src/aurelio_pipeline/infra/",
+          "pipeline/src/aurelio_pipeline/validacao/"
+        ]
+      },
+      {
+        "type": "single_data_asset",
+        "evidence": [
+          "aurelio_normalized.db"
+        ]
+      }
     ],
     "features": []
   },
   "notes": [
-    "Projeto é ativo de dados, não aplicação: 24 tabelas (14 de domínio), 18 índices, 0 views, 0 triggers.",
-    "README lista 8 tabelas de domínio, banco tem 14 — divergência a documentar pelo Data Master.",
-    "Ciclo forward já aberto: _reversa_forward/001-spike-de-flexoes (spike StarDict/KOReader)."
+    "Re-extração de 2026-10-15: o projeto deixou de ser só ativo de dados; ganhou o pipeline das features 002 e 003 e o spike da 001.",
+    "Banco inalterado desde 2026-07-03 (contagens do manifesto e mtime conferidos); 25 tabelas no sqlite_master contando sqlite_sequence, 18 índices.",
+    "Suíte: 145 testes aprovados em 0,8 s, com dados sintéticos; marcador integracao para o código real do Readest.",
+    "Sem CI/CD, Docker, .env ou serviço de rede próprio; a única rede é a obtenção inicial da conferência (GitHub, npm)."
   ]
 }

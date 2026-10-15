@@ -49,10 +49,10 @@ Estático entre regenerações. Única evolução prevista: reimportação compl
 
 ## Observabilidade
 
-Nenhuma embutida (é um arquivo). A auditoria é externa: `PRAGMA integrity_check`, contagens-baseline (`domain.md` §4) e, no pipeline futuro, relatórios JSON de cobertura.
+Nenhuma embutida (é um arquivo). A auditoria é externa: `PRAGMA integrity_check`, contagens-baseline (`domain.md` §4) e, no pipeline futuro, relatórios JSON de cobertura. **[Revisão 2026-10-15]** o pipeline existe: a ingestão confere esquema e contagens contra `pipeline/manifesto-integridade.json` a cada build, ver `pipeline-nucleo/requirements.md` RF-02.
 
 ## Riscos e Lacunas
 
-- 🔴 Semântica de `flexions.type` (1–5), `entries.head_type` (1–4) e mapa `conjugations.tense` 1–13 — ver `questions.md` da unit.
+- 🟢 Semântica de `flexions.type` (1–5), `entries.head_type` (1–4) e mapa `conjugations.tense` 1–13 — ver `questions.md` da unit. **[Revisão 2026-10-15]** 🔴 → 🟢: resolvidas por amostragem na revisão de 2026-07-03 (Q-01 a Q-03 respondidas) e registradas em `data-dictionary.md`; a marca 🔴 tinha ficado para trás.
 - 🟡 Exclusividade `examples.definition_id` ⊕ `locution_definition_id` não imposta por CHECK; assumida pela modelagem.
 - 🟡 `orthographic_marks.rule_code` → `orthographic_rules.rule` é ligação textual sem FK.

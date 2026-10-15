@@ -1,6 +1,6 @@
 # Flowchart — módulo `banco-lexical`
 
-> Gerado pelo reversa-archaeologist em 2026-07-03. O módulo é dado puro; os fluxos abaixo descrevem (1) a composição de um verbete e (2) o lookup de leitura que o pipeline forward materializará em StarDict.
+> Gerado pelo reversa-archaeologist em 2026-07-03; revisto em 2026-10-15. O módulo é dado puro; os fluxos abaixo descrevem (1) a composição de um verbete e (2) o lookup de leitura, hoje materializado em StarDict pelo pipeline (ver `pipeline-nucleo.md`, `pipeline-koreader.md` e `pipeline-readest.md`).
 
 ## 1. Composição de um verbete completo
 
@@ -18,7 +18,7 @@ flowchart TD
     E --> OM[orthographic_marks] --> OR[orthographic_rules]
 ```
 
-## 2. Lookup de uma forma tocada (fluxo-alvo do produto)
+## 2. Lookup de uma forma tocada (implementado pelo pipeline desde as features 002 e 003)
 
 ```mermaid
 flowchart TD

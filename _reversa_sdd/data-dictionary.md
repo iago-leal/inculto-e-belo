@@ -1,7 +1,10 @@
-# Dicionário de dados — aurelio_normalized.db
+# Dicionário de dados — inculto-e-belo
 
-> Gerado pelo reversa-archaeologist em 2026-07-03, a partir do DDL real (`sqlite_master`).
+> Gerado pelo reversa-archaeologist em 2026-07-03, a partir do DDL real (`sqlite_master`); revisto na re-extração de 2026-10-15.
 > Confidência: 🟢 salvo indicação contrária. Comentários de coluna vindos do próprio DDL aparecem entre aspas.
+> Parte 1: o banco `aurelio_normalized.db`, inalterado desde 2026-07-03. Parte 2: as estruturas de dados do pipeline e os formatos dos artefatos e relatórios, novos nesta re-extração.
+
+# Parte 1 — `aurelio_normalized.db`
 
 ## entries — 143.376 linhas (137.784 lemas únicos)
 
@@ -18,7 +21,7 @@
 | orthoepy                        | TEXT       | não         | Ortoépia, "do entries.orthoepy original"                                                                                                                                                                                                       |
 | etymology_html / etymology_text | TEXT       | não         | Etimologia "do `<ETM>`" (com/sem tags)                                                                                                                                                                                                         |
 | head_type                       | INTEGER    | não         | 🟢 1=palavra comum (136.381); 2=letra/sigla/símbolo (1.132: "A", "Å", "A4"); 3=afixo/elemento de composição (3.751: "a-", "-a-"); 4=locução/expressão latina-estrangeira (2.112: "ab absurdo") — resolvido por amostragem [Revisão 2026-07-03] |
-| most_used                       | INTEGER    | não         | 🟡 flag de vocabulário frequente (1: 3.039)                                                                                                                                                                                                    |
+| most_used                       | INTEGER    | não         | 🟡 flag de vocabulário frequente (1: 3.039). Desde a feature 003 é coluna requerida pelo pipeline e ordena os artigos não coincidentes nas páginas combinadas do Readest                                                                          |
 | sort_key                        | TEXT       | não         | Chave de ordenação editorial                                                                                                                                                                                                                   |
 
 ## word_class_blocks — 168.361 linhas
@@ -129,3 +132,90 @@
 2. `conjugations.infinitive` ↔ `entries.lemma` (textual; 11 órfãos conhecidos)
 3. `notes.parent_id` ↔ pai indicado por `parent_type` (polimórfica)
 4. `examples`: exclusividade entre `definition_id` e `locution_definition_id` não imposta por CHECK 🟡
+
+## Colunas consumidas pelo pipeline
+
+🟢 `COLUNAS_REQUERIDAS` em `pipeline/src/aurelio_pipeline/infra/repositorio.py`. A ausência de qualquer uma reprova a ingestão com `EsquemaInvalidoError`, que lista todas as faltantes de uma vez.
+
+| Tabela | Colunas requeridas |
+|--------|--------------------|
+| entries | id, lemma, lemma_stylized, homonym, word_class_summary, ipa, etymology_html, sort_key, most_used |
+| word_class_blocks | id, entry_id, word_class_id, position, intro_text |
+| word_classes | id, whole |
+| definitions | id, word_class_block_id, position, number, content_html, content_text, rubric_id |
+| rubrics | id, abbreviation |
+| examples | id, definition_id, locution_definition_id, position, kind, content_html, content_text |
+| notes | id, parent_type, parent_id, position, content_html, content_text |
+| locutions | id, entry_id, position, expression, rubric_id |
+| locution_definitions | id, locution_id, position, number, content_html, content_text, rubric_id |
+| verb_rection | id, entry_id, sense, position, transitivity, prepositions, observation |
+| flexions | id, entry_head, flexion |
+| conjugations | id, infinitive, conjugation |
+
+Não são lidas: `slug`, `slug_reverse`, `orthoepy`, `etymology_text`, `head_type`, `verb_rection.source` e `raw_text`, as colunas `*_slug`, `type` e `homonym` de `flexions` e `conjugations`, `tense` e `person`, as tabelas ortográficas e as tabelas FTS5.
+
+# Parte 2 — pipeline, artefatos e relatórios
+
+## Manifesto de integridade (`pipeline/manifesto-integridade.json`)
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| gerado_em | string `AAAA-MM-DD` | Data do banco de referência (`2026-07-03`); vira o `date` do `.ifo` do Readest |
+| banco_referencia | string | Nome do arquivo do banco |
+| observacao | string | Política: atualização sempre em commit deliberado e próprio |
+| contagens | objeto tabela → inteiro | As 12 contagens conferidas a cada build |
+
+## Agregado de leitura (`dominio/modelos.py`, imutável)
+
+| Classe | Campos | Origem no banco |
+|--------|--------|-----------------|
+| `Verbete` | id, lemma, lemma_stylized, homonym, word_class_summary, ipa, etymology_html, blocos, locucoes, notas, regencias | `entries` e filhos |
+| `BlocoClasse` | classe (`word_classes.whole`), intro_text, definicoes | `word_class_blocks` |
+| `Definicao` | numero, rubrica (`rubrics.abbreviation`), content_html, content_text, exemplos, notas | `definitions` ou `locution_definitions` |
+| `Exemplo` | kind, content_html, content_text | `examples` |
+| `Nota` | content_html, content_text | `notes` |
+| `Locucao` | expression, rubrica, definicoes, notas | `locutions` |
+| `Regencia` | sense, transitivity, prepositions, observation | `verb_rection` |
+
+## Estruturas do alvo Readest (`dominio/modelos.py`)
+
+| Classe | Campos | Descrição |
+|--------|--------|-----------|
+| `PaginaReadest` | chave (minúsculas), grafia (gravada no índice), lemas (sequência de artigos), destino | Uma chave pesquisável; `combinada` quando há mais de um lema |
+| `PlanoPaginas` | paginas, em ordem de índice | `do_idx()` e `do_syn()` separam os destinos |
+| `DESTINOS_READEST` | `idx-lema`, `idx-forma-combinada`, `idx-forma-direta`, `syn` | Enum de destino no índice |
+| `ResultadoEscritaReadest` | idx, syn, trechos, bytes_corpo, impressao_digital, preparo, artefato, expectativa, duracao_s, arquivos | Saída do escritor |
+
+## Formatos dos artefatos StarDict
+
+| Arquivo | Estrutura | KOReader (`dist/aurelio-stardict/`) | Readest (`dist/readest/aurelio-readest/`) |
+|---------|-----------|-------------------------------------|-------------------------------------------|
+| `.ifo` | Texto `chave=valor` após a linha mágica | Escrito pelo PyGlossary; `date` é a data do build | Escrito pelo pipeline: `version`, `bookname`, `wordcount`, `synwordcount`, `idxfilesize`, `sametypesequence=h`, `date` do manifesto, `description` com a impressão digital |
+| `.idx` | `palavra\0` + offset (u32 BE) + tamanho (u32 BE) | Ordem do PyGlossary; 137.784 entradas | Ordem `cmpAscii` (minúsculas, UTF-16); 160.302 entradas |
+| `.syn` | `forma\0` + índice no `.idx` (u32 BE) | 774.003 entradas | 727.244 entradas |
+| `.dict.dz` | dictzip (gzip com campo de blocos) | Um artigo por entrada | Páginas com artigos separados por `<hr>`; sequências gravadas uma vez; `mtime=0` |
+
+## Relatórios JSON
+
+| Arquivo | Alvo | Campos |
+|---------|------|--------|
+| `relatorio-cobertura.json` | KOReader | entrada_linhas, entrada_formas, gravadas, descartes {orfa, duplicada, identica}, orfas, headwords_com_formas |
+| `parity-report.json` | KOReader | veredito, gerado_em, seeds {verbetes, flexoes}, contagens, amostras {verbetes_ok, flexoes_ok}, divergencias [{check, detalhe}] |
+| `relatorios/relatorio-agrupamento.json` | Readest | chaves, paginas_simples, paginas_combinadas, sequencias_distintas, descartes_sem_letra, formas_descartadas [{forma, lema}], artigos_por_pagina, indice {idx, syn, idx_lemas, idx_formas_combinadas, idx_formas_diretas} |
+| `relatorios/validacao-readest.json` | Readest | Mesma forma do `parity-report.json`; seeds {conteudo}; contagens com `falhas_<check>` para os 9 checks |
+| `relatorios/conferencia-readest.json` | Readest | readest {tag, commit}, fflate, node, chaves_ok, chaves_falha, trechos_ok, trechos_falha, falhas (até 50), duracao_s, veredito |
+
+## Expectativa da conferência (`expectativa-conferencia.tsv`, só no preparo)
+
+Uma linha por chave do `.idx` e do `.syn`: `grafia\toffset\ttamanho`, com o offset e o tamanho que a busca do Readest deve devolver. É removida na promoção.
+
+## Fonte fixada da conferência (`pipeline/conferencia_readest/fonte-readest.json`)
+
+| Campo | Valor atual | Uso |
+|-------|-------------|-----|
+| repositorio, tag, commit, base | `readest/readest`, `v0.12.16`, `3cc39ad7…`, `apps/readest-app/src/services/dictionaries/` | Montagem da URL bruta |
+| arquivos | SHA-256 de `stardictReader.ts` e `dictZip.ts` originais | Integridade do download |
+| reescritas | 3 substituições {arquivo, motivo, de, para} | Compatibilidade com a remoção nativa de tipos do Node |
+| arquivos_reescritos | SHA-256 dos dois arquivos depois das reescritas | Validade do cache |
+| fflate | `0.8.3` | Versão exigida em `node_modules` |
+| node_minimo | `22.18` | Pré-verificação do ambiente |
