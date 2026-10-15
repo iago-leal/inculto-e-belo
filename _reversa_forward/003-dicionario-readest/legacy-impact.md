@@ -2,7 +2,7 @@
 
 > Data: 2026-10-15 · Gerado por `/reversa-coding` (modo autônomo)
 > Âncora: `_reversa_sdd/architecture.md` (componentes) e `_reversa_sdd/domain.md` (regras 🟢)
-> Execução: 22 de 23 ações concluídas; T021 (importação no Readest do Mac) pendente, ver `actions.md#notas-de-execução`.
+> Execução: 23 de 23 ações concluídas; a T021 (importação no Readest do Mac) foi feita pelo usuário e verificada no disco pelo agente, ver `actions.md#notas-de-execução`.
 
 ## 1. Arquivos afetados
 

@@ -20,7 +20,7 @@
 - **O-02** — Conferência fixada no Readest `v0.12.16` (commit `3cc39ad7…`), com três reescritas mecânicas verificadas por hash; uma versão nova do Readest que mude a busca exige atualizar `fonte-readest.json` (README, seção "Atualizar a versão fixada do Readest").
 - **O-03** — Ordem dos artigos depende de `entries.most_used` (L-04, critério editorial inferido): se a marca mudar de sentido numa versão nova do banco, a ordem das páginas combinadas muda sem erro.
 - **O-04** — Divisor `<hr>` como fronteira de artigos (D-10): se o banco passar a conter `<hr>` no HTML, a validação reprova com o nome da chave; vigiar RB-03.
-- **O-05** — Importação no Readest do Mac (RF-08, T021) pendente nesta execução: o dicionário ainda não foi conferido no aplicativo, inclusive o divisor no tema escuro.
+- **O-05** — Importação no Readest do Mac (RF-08, T021) concluída em 2026-10-15: arquivos importados com hash idêntico ao do artefato, dicionário habilitado e sincronizado na conta. Resta sem conferência visual explícita o divisor `<hr>` no tema escuro; se ele não aparecer, o ajuste é de estilo da página, sem efeito na busca.
 - **O-06** — Peculiaridade do banco visível nas páginas: «a» registrado como forma de «bretão» faz a página de «a» mostrar «bretão» (comportamento exigido por RN-02; corrigir o dado foge ao escopo).
 
 ## Histórico de re-extrações
